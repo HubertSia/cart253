@@ -22,30 +22,68 @@ function setup() {
  * Draws a house
  */
 function draw() {
-    // The sky
-    background(150, 200, 250);
 
-    // A cloud
-    push();
-    noStroke();
-    // Note: using a single number for a colour will be greyscale
-    // (As if you used the same number for R, G, and B)
-    // So this is white:
-    fill(255);
-    ellipse(100, 100, 100, 100);
-    ellipse(180, 80, 100, 100);
-    ellipse(160, 120, 60, 60);
-    ellipse(190, 130, 60, 60);
-    ellipse(220, 120, 60, 60);
-    pop();
+    // A call to the function to execute the code
+    drawSky();
+    drawCloud();
+    drawGround();
+    drawHouse() ;
 
-    // The ground
-    push();
-    noStroke();
-    fill(200);
-    rect(0, 400, 640, 480);
-    pop();
+/*
+*Creates the sky
+*/
+    
+    function drawSky(){
+            // The sky
+        background(150, 200, 250);
 
+    }
+    
+}
+
+
+
+
+
+/*
+*Draws a cloud
+*/
+// Create a function to contain our code
+function drawCloud(){
+
+        // A cloud
+        push();
+        noStroke();
+        // Note: using a single number for a colour will be greyscale
+        // (As if you used the same number for R, G, and B)
+        // So this is white:
+        fill(255);
+        ellipse(100, 100, 100, 100);
+        ellipse(180, 80, 100, 100);
+        ellipse(160, 120, 60, 60);
+        ellipse(190, 130, 60, 60);
+        ellipse(220, 120, 60, 60);
+        pop();
+}
+
+
+/*
+*Draws a ground
+*/
+function drawGround(){
+        // The ground
+        push();
+        noStroke();
+        fill(200);
+        rect(0, 400, 640, 480);
+        pop();
+    
+}
+
+/*
+*Draws a house, the window and the door
+*/
+function drawHouse(){
     // The main body of the house
     push();
     noStroke();
@@ -86,4 +124,9 @@ function draw() {
     fill(255, 215, 0);
     ellipse(340, 360, 10, 10);
     pop();
+}
+
+function drawSky(){
+
+
 }
