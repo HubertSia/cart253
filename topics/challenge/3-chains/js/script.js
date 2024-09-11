@@ -1,10 +1,8 @@
 /**
- * Git Workflow Example
- * Pippin Barr
+ * Chains
  * 
- * Some sample code for playing with version control.
- * Draws a pyramid in the centre of the canvas and a
- * red circle at the user's mouse position.
+ * 
+ * 
  */
 
 "use strict";
