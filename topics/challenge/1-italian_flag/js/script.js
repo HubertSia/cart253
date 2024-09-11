@@ -7,7 +7,6 @@
 
 
 function setup() {
-    // A 640x480 canvas
     createCanvas(790, 755);
 
 
