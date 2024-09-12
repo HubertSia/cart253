@@ -46,7 +46,7 @@ function theSmile() {
 
       pop();
       noFill();
-      strokeWeight(20);
+      strokeWeight(20); 
       arc(400, 500, 400, 300, 0, PI);
       push();
 }
