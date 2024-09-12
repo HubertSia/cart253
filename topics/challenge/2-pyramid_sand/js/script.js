@@ -22,27 +22,29 @@ function draw() {
 
 function sand(){
 
-    //push();
+    push();
+    noStroke();
+    fill(255, 255, 0);
     ellipse(0, 600, 725, 590);
     ellipse(590, 750, 970, 690);
-    noStroke();
-    fill(255, 210, 0); 
-    //pop();
+    pop();
 }
 
 
 
 function pyramid(){
 
-    //push();
-    triangle(185, 485, 390, 530, 325, 287);
-    fill(128, 128, 128);
+    push();
+    fill(255, 210, 0);
     noStroke();
-    //pop();
+    triangle(185, 485, 390, 530, 325, 287);
+    pop();
 }
 
 function pyramid2(){
+    push();
+    fill('grey');
+    noStroke();         
     triangle(390, 530, 485, 460, 325, 287);
-    fill(255, 255, 0);    
-    noStroke();
+    pop();
 }

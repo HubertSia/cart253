@@ -23,27 +23,30 @@ function draw() {
 }
 
 
-function theFace(){
-       // push();
-        ellipse(400, 400, 600, 600);    
+function theFace() {
+        push();
+        noFill();
+        strokeWeight(20);
+        ellipse(400,400, 600, 600);    
+        pop();
+}
+
+
+function theEyes() {
+        push();
         fill(0, 0, 0);    
         strokeWeight(20);
-       // pop();
-}
-
-
-function theEyes(){
-        //push();
         ellipse(250, 300, 50, 130);
         ellipse(550, 300, 50, 130);
-        noFill();
-        //pop();
+        pop();
 }
 
 
-function theSmile(){
+function theSmile() {
 
-
-      arc(400, 500, 400, 300, HALF_PI, PI);
-
+      pop();
+      noFill();
+      strokeWeight(20);
+      arc(400, 500, 400, 300, 0, PI);
+      push();
 }

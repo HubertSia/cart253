@@ -24,13 +24,15 @@ function draw() {
 
 
     function chains(){
+        push();
+        noFill();
+        strokeWeight(30);
         ellipse(395, 0, 213, 306);
         ellipse(395, 210, 213, 306);
         ellipse(395, 400, 213, 306);
         ellipse(395, 600, 213, 306);
         ellipse(395, 800, 213, 306);
-        noFill();
-        strokeWeight(30);
+        pop();
     }
 
 

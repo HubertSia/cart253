@@ -36,7 +36,7 @@ function whiteFlag(){
 
         push();
         noStroke();
-        fill(250, 250, 250);
+        fill(0, 128, 1);
         rect(300, 190, 200, 400);
         pop();
 
@@ -48,7 +48,7 @@ function greenFlag(){
 
         push();
         noStroke();
-        fill(0, 128, 1);
+        fill(125, 125, 125);
         rect(100, 190, 200, 400);
         pop();
 
