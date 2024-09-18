@@ -34,6 +34,20 @@ function draw() {
     ego.fill = ego.fill - 0.5;
     // Size gets bigger, symbolizing taking up emotional space
     ego.size = ego.size + 1;
+    // Constrain the ego between 0 and the width of the canvas
+    ego.size = constrain(ego.size, 0, width);
+    
+
+/**
+*As you can see constrain() takes three arguments:
+
+-The number to constrain (this is often in a variable!)
+-The minimum the number is allowed to be
+-The maximum the number is allowed to be
+constrain() will take that information and give back 
+a version of the first number that is constrained to be within the minimum and maximum.
+**/
+
 
     // Draw the ego
     push();
