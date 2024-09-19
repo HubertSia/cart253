@@ -85,21 +85,7 @@ function drawTheEgg(){
         }
       
 
-        let img;
 
-// Load the image and create a p5.Image object.
-function preload() {
-  img = loadImage('/assets/dk_head.png');
-}
-
-function setup() {
-  createCanvas(100, 100);
-
-  // Draw the image.
-  image(img, 0, 0);
-
-  describe('Image of the underside of a white umbrella and a gridded ceiling.');
-}
       
       
 }
