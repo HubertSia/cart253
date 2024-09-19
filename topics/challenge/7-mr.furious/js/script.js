@@ -22,11 +22,24 @@ let mrFurious = {
   }
 };
 
+// The sky fill
 let sky = {
     r: 160,
     b: 180,
-    g:  200,
-}
+    g: 200,
+};
+
+// The annoying bird
+let bird = {
+
+  x: 0,
+  y: 0,
+  size: 10,
+  speed: 0.25
+
+
+};
+
 
 /**
  * Create the canvas
@@ -39,23 +52,26 @@ function setup() {
  * Draw (and update) Mr. Furious
  */
 function draw() {
+
   
   //Truning the sky dark
-  sky.r = sky.r - 1;
-  sky.b = sky.b - 1;
-  sky.g = sky.g - 1;
+  sky.r -= 1;
+  sky.b -= 1;
+  sky.g -= 1;
     
   background(sky.r, sky.b, sky.g);
 
   //We turn red by lowering the g and the b values
-  mrFurious.fill.g = mrFurious.fill.g * 0.999;
-  mrFurious.fill.b = mrFurious.fill.b * 0.999;
+  mrFurious.fill.g -= 1;
+  mrFurious.fill.b -= 1;
 
   //Mr. Furious is shaking
-  mrFurious.x = mrFurious.x - random()*10;
-  mrFurious.y = mrFurious.y - random()*10;
+  mrFurious.x = width/2 + random()*10;
+  mrFurious.y = width/2 +random()*10;
 
-
+  //Move bird
+  bird.x += bird.speed;
+  bird.y += bird.speed;
 
   // Draw Mr. Furious as a coloured circle
   push();
@@ -63,4 +79,17 @@ function draw() {
   fill(mrFurious.fill.r, mrFurious.fill.g, mrFurious.fill.b);
   ellipse(mrFurious.x, mrFurious.y, mrFurious.size);
   pop();
+
+
+
+ // draw the bird
+
+ push();
+ noStroke();
+ fill('yellow');
+ rectMode(CENTER);
+ rect(bird.x, bird.y, bird.size, bird.size)
+ pop();
+
+
 }
