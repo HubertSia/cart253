@@ -49,6 +49,7 @@ function draw() {
 
         background('#ede8d0');
         drawTheEgg();
+        TheBouncing();
 
         
 
@@ -67,12 +68,21 @@ function drawTheEgg(){
         ellipse(theEgg.x, theEgg.y, theEgg.size.w/2, theEgg.size.h/2);
         console.log('ellipse');
         pop();
- 
-        
 
-        // coding to make my egg bounce
+
+      
+}
+
+// Make my egg bounce
+
+function TheBouncing(){
+
+
+        // Our position of the Egg becomes the speed
         theEgg.x += PosSpeedX;
         theEgg.y += PosSpeedY;
+
+        
         if (theEgg.x > width - theEgg.size.w/2 || theEgg.x < theEgg.size.w/2) {
           PosSpeedX = -PosSpeedX;
           fill(random(255),random(255), random(255));
@@ -83,7 +93,4 @@ function drawTheEgg(){
           fill(random(255),random(255), random(255));
 
         }
-            
-      
-}
-
+         }    
