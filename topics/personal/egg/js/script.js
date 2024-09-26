@@ -32,8 +32,8 @@ let theEgg = {
 
 }
 
-let img = {
-
+let imgDK = {
+        // Image x and y is dependant to the position of the Egg
         x: undefined,
         y: undefined,
 
@@ -41,7 +41,7 @@ let img = {
 
 // Load the image.
 function preload() {
-  img = loadImage('/topics/personal/egg/assets/images/dk_head.png');
+        imgDK = loadImage('/topics/personal/egg/assets/images/dk_head.png');
 }
 
 
@@ -54,7 +54,6 @@ let PosSpeedY = 5;
 // Once at the beginning of the program
 function setup() {
         createCanvas(640, 640);
-        angleMode(DEGREES);  
 
 
 }
@@ -67,6 +66,9 @@ function draw() {
         TheBouncing();
         EggHatched();
 
+        let ImgW = map(mouseX, 0, width, 0, 360);
+        let ImgH = map(mouseY, 0, height, 20, 300);
+
         
 
     
@@ -77,6 +79,14 @@ function draw() {
 *Draws a The E G G
 */
 function drawTheEgg(){
+
+
+  // Scale the mouseX value from 0 to 720 to a range between 0 and 360
+  let circleHue = map(mouseX, 0, width, 0, 360);
+
+  // Scale the mouseY value from 0 to 400 to a range between 20 and 300
+  let diameter = map(mouseY, 0, height, 20, 300);
+
         push();
         ellipse(theEgg.x, theEgg.y, theEgg.size.w/2, theEgg.size.h/2);
         console.log('ellipse');
@@ -119,21 +129,25 @@ function TheBouncing(){
          function EggHatched(){
 
 
-                img.x +=PosSpeedX + 5
-                img.y +=PosSpeedY + 5
+                imgDK.x +=PosSpeedX + 5
+                imgDK.y +=PosSpeedY + 5
+ 
 
-
-                img.x = theEgg.x;
-                img.y = theEgg.y;
+                imgDK.x = theEgg.x;
+                imgDK.y = theEgg.y;
 
                 if (mouseIsPressed){
 
                         console.log('It clicked!')
-                          image(img, img.x-100, img.y-100);
-
-                          img.resize(200, 200);
+                          image(imgDK, imgDK.x-100, imgDK.y-100);
+                          
+                          push()
+                          imgDK.resize(200, 200);
                           theEgg.size.h = 0;
                           theEgg.size.w = 0;
+                          
+                          pop();
+
                         
                 }else{
 
