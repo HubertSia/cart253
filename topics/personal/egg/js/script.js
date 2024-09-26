@@ -32,7 +32,12 @@ let theEgg = {
 
 }
 
-let img;
+let img = {
+
+        x: undefined,
+        y: undefined,
+
+};
 
 // Load the image.
 function preload() {
@@ -50,7 +55,6 @@ let PosSpeedY = 5;
 function setup() {
 createCanvas(640, 640);
 
-let ColorImg =   map(mouseX, mouseY, random());
 
 }
 
@@ -86,7 +90,7 @@ function drawTheEgg(){
 function TheBouncing(){
 
 
-        // Our position of the Egg and speed
+        // The speed of the egg goes faster
         theEgg.x += PosSpeedX;
         theEgg.y += PosSpeedY;
 
@@ -104,7 +108,6 @@ function TheBouncing(){
         // The Egg bounce off the wall
         if (theEgg.y > height - theEgg.size.h/5 || theEgg.y < theEgg.size.h/5) {
           PosSpeedY = -PosSpeedY;
-
           // Randomise the color of the egg
           fill(random(255),random(255), random(255));
 
@@ -113,10 +116,28 @@ function TheBouncing(){
          
          
          function EggHatched(){
+
+
+                img.x +=PosSpeedX + 5
+                img.y +=PosSpeedY + 5
+
+
+                img.x = theEgg.x;
+                img.y = theEgg.y;
+
                 if (mouseIsPressed){
 
                         console.log('It clicked!')
+                          image(img, img.x-100, img.y-100);
+
+                          img.resize(200, 200);
+                          theEgg.size.h = 0;
+                          theEgg.size.w = 0;
                         
+                }else{
+
+                        theEgg.size.w = 200;
+                        theEgg.size.h = 290;
                 }
 
 
