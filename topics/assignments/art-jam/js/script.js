@@ -2,12 +2,10 @@
  * Behold! EGG
  * Hubert Sia
  * 
- * A simple EGG,
- * An EGG, it has many utility. It is the beggining of a cycle
- * An EGG, a source for consuming as a food for energy
- * An EGG, a weapon to use during pranks and such
- * An EGG, has many uses
- * Let's make our great nation EGGTASTIC!!!
+ *A colorful EGG,
+*Click the left mouse button to see M O N K E Y
+*Move around the mouse to change the background color
+*Let's make our great nation EGGTASTIC!!!
  * 
  * 
  * 
@@ -64,7 +62,7 @@ function preload() {
         //imageList[2] = loadImage('/topics/personal/egg/assets/images/mario_head.png');
 
 
-        imgDK = loadImage('/topics/personal/egg/assets/images/dk_head.png'); 
+        imgDK = loadImage('/topics/assignments/art-jam/assets/images/dk_head.png'); 
 
 }
 
@@ -81,7 +79,6 @@ let PosSpeedY = 5;
 function setup() {
         createCanvas(640, 640);
         colorMode(HSB,100);
-
 
 }
 
@@ -117,8 +114,9 @@ function Bg(){
 function drawTheEgg(){
 
         push();
+        
         ellipse(theEgg.x, theEgg.y, theEgg.size.w/2, theEgg.size.h/2);
-        console.log('ellipse');
+        //console.log('ellipse');
         pop();
 
 
@@ -165,6 +163,8 @@ function TheBouncing(){
                 imgDK.x = theEgg.x;
                 imgDK.y = theEgg.y;
 
+
+
                 if (mouseIsPressed){
 
                         console.log('It clicked!')
@@ -173,11 +173,11 @@ function TheBouncing(){
                           image(imgDK, imgDK.x-20, imgDK.y-200);
                           image(imgDK, imgDK.x-100, imgDK.y-300);
                           
-                          push()
+                          push()       
+                          
                           imgDK.resize(200, 200);
                           theEgg.size.h = 0;
                           theEgg.size.w = 0;
-                          
                           pop();
 
                         
@@ -193,8 +193,7 @@ function TheBouncing(){
 
          function keyPressed() {
                 if( key === 'q'){
-                     console.log('It works!!!')   
-                
+                console.log('It clicks')
                 }
               }
 
