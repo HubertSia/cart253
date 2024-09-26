@@ -2,11 +2,11 @@
 
 Hubert Sia
 
-[View this project online](URL_FOR_THE_RUNNING_PROJECT)
+[View this project online] https://hubertsia.github.io/cart253/topics/assignments/art-jam/
 
 ## Description
 
-This description should help the reader understand what the program is, what any controls do, and perhaps what the desired experience it.
+The egg eperience that hatches Donkey Kong
 
 ## Credits
 This project uses [p5.js](https://p5js.org).

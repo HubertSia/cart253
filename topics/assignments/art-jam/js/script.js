@@ -62,7 +62,7 @@ function preload() {
         //imageList[2] = loadImage('/topics/personal/egg/assets/images/mario_head.png');
 
 
-        imgDK = loadImage('/topics/assignments/art-jam/assets/images/dk_head.png'); 
+        imgDK = loadImage('assets/images/dk_head.png'); 
 
 }
 
