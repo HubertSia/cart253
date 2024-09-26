@@ -32,6 +32,13 @@ let theEgg = {
 
 }
 
+let img;
+
+// Load the image.
+function preload() {
+  img = loadImage('/topics/personal/egg/assets/images/dk_head.png');
+}
+
 
 //Egg Speed
 let PosSpeedX = 5;
@@ -42,6 +49,9 @@ let PosSpeedY = 5;
 // Once at the beginning of the program
 function setup() {
 createCanvas(640, 640);
+
+let ColorImg =   map(mouseX, mouseY, random());
+
 }
 
 // Every frame of the program
@@ -50,6 +60,7 @@ function draw() {
         background('#ede8d0');
         drawTheEgg();
         TheBouncing();
+        EggHatched();
 
         
 
@@ -62,9 +73,6 @@ function draw() {
 */
 function drawTheEgg(){
         push();
-        // We use the variable names mouseX and mouseY instead
-        // of numbers for the red and green of the circle's fill
-        //fill(mouseX, mouseY, 0);
         ellipse(theEgg.x, theEgg.y, theEgg.size.w/2, theEgg.size.h/2);
         console.log('ellipse');
         pop();
@@ -78,19 +86,41 @@ function drawTheEgg(){
 function TheBouncing(){
 
 
-        // Our position of the Egg becomes the speed
+        // Our position of the Egg and speed
         theEgg.x += PosSpeedX;
         theEgg.y += PosSpeedY;
 
-        
-        if (theEgg.x > width - theEgg.size.w/2 || theEgg.x < theEgg.size.w/2) {
+        // If Egg's X position reach the limit of the width of the canvas
+        // The Egg bounce off the wall
+        if (theEgg.x > width - theEgg.size.w/5 || theEgg.x < theEgg.size.w/5) {
           PosSpeedX = -PosSpeedX;
+
+          //Randomise the color of the Egg
           fill(random(255),random(255), random(255));
           
         }
-        if (theEgg.y > height - theEgg.size.h /2 || theEgg.y < theEgg.size.h/2) {
+
+        // If Egg's Y position reach the limite of the height of the canvas OR reaches
+        // The Egg bounce off the wall
+        if (theEgg.y > height - theEgg.size.h/5 || theEgg.y < theEgg.size.h/5) {
           PosSpeedY = -PosSpeedY;
+
+          // Randomise the color of the egg
           fill(random(255),random(255), random(255));
 
         }
-         }    
+         }   
+         
+         
+         function EggHatched(){
+                if (mouseIsPressed){
+
+                        console.log('It clicked!')
+                        
+                }
+
+
+         }
+
+
+
