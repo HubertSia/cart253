@@ -41,6 +41,9 @@ const target = {
   }
 };
 
+
+let threshold = 100;
+
 /**
  * Create the canvas
  */
@@ -116,25 +119,65 @@ function drawTarget() {
  *Move the puck
  */
  function moveTarget() {
-    // Calculate the distance between the cursor and the puck
-    // and put it into a "distance" variable (using const again since
-    // we won't change this again later!)
+    
+  
     const distance = dist(user.x, user.y, puck.x, puck.y);
-    // Calculate whether the mouse overlaps the creature by checking whether
-    // the distance is less than its radius! (Half its diameter)
-    const mouseIsOverlapping = (distance < puck.size/2);
-    // Check if EITHER movedX OR movedY are NOT equal to zero
-    // and store the result in our mouseIsMoving variable (another
-    // const because we don't want to change it later)
-    const mouseIsMoving = (movedX !== 0 || movedY !== 0);
+    /**
+   * 
+   * 
+   * 
+   *  const overlap = (distance < user.size / 2 + puck.size / 2);
+    if(overlap){
+      console.log("Overlap!");
+      const dx = user.x - puck.x
+      const dy = user.y - puck.y
 
+      if(abs(x) < abs(y)){
 
-     if (mouseIsOverlapping && mouseIsMoving) {
-        // The cursor is overlapping the puck. Move the puck a pixel away 
-        console.log("It works!!!");
-        puck.x = user.x + 1;
+      // It's closer on x
+        if(dx < 0){
+          puck.x +=1
         
+        }
+
+        else if (dx > 0){
+          puck.x -= 1;
+        
+        }
+  
+
+      } 
+
     }
+
+   * 
+   * 
+   * 
+   * 
+   *  */  
+
+
+
+
+     if( distance < threshold){
+
+    if(user.x < puck.x){
+
+      puck.x += 5;  
+    }else if (user.x > puck.x){
+      puck.x -= 5;
+    }
+
+    if(user.y < puck.y){
+
+      puck.y += 5;  
+    }else if (user.y > puck.y){
+      puck.y -= 5;
+    }
+
+    }
+
+
 
 
  
@@ -151,23 +194,29 @@ function drawTarget() {
     // and put it into a "distance" variable (using const again since
     // we won't change this again later!)
     const distance = dist(puck.x, puck.y, target.x, target.y);
-    // Calculate whether the mouse overlaps the creature by checking whether
-    // the distance is less than its radius! (Half its diameter)
-    const mouseIsOverlapping = (distance < target.size/2);
-    // Check if EITHER movedX OR movedY are NOT equal to zero
-    // and store the result in our mouseIsMoving variable (another
-    // const because we don't want to change it later)
-    const mouseIsMoving = (movedX !== 0 || movedY !== 0);
 
 
-     if (mouseIsOverlapping && mouseIsMoving) {
+     if( distance < threshold){
+
+
+     if (puck.x == target.x) {
         // The cursor is overlapping the puck. Move the puck a pixel away 
         console.log("target acquired!!!");
         target.fill = target.fills.goal;
 
-    }else{
+    }  if (puck.y == target.y) {
+      // The cursor is overlapping the puck. Move the puck a pixel away 
+      console.log("target acquired!!!");
+      target.fill = target.fills.goal;
+
+  }
+    
+    
+    else{
 
         target.fill = target.fills.idle;
     }
 
    }
+
+  }

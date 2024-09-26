@@ -53,7 +53,8 @@ let PosSpeedY = 5;
 
 // Once at the beginning of the program
 function setup() {
-createCanvas(640, 640);
+        createCanvas(640, 640);
+        angleMode(DEGREES);  
 
 
 }
