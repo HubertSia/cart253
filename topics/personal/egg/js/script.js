@@ -39,10 +39,36 @@ let imgDK = {
 
 };
 
-// Load the image.
+//let imgLuigi = {
+        // Image x and y is dependant to the position of the Egg
+  //      x: undefined,
+    //    y: undefined,
+
+//};
+
+//let imgMario = {
+  //      // Image x and y is dependant to the position of the Egg
+    //    x: undefined,
+      //  y: undefined,
+
+//};
+
+
+//var imageList = [];
+
+
+// Load the images
 function preload() {
-        imgDK = loadImage('/topics/personal/egg/assets/images/dk_head.png');
+        //imageList[0] = loadImage('/topics/personal/egg/assets/images/dk_head.png');
+        //imageList[1] = loadImage('/topics/personal/egg/assets/images/luigi_head.png');
+        //imageList[2] = loadImage('/topics/personal/egg/assets/images/mario_head.png');
+
+
+        imgDK = loadImage('/topics/personal/egg/assets/images/dk_head.png'); 
+
 }
+
+
 
 
 //Egg Speed
@@ -54,6 +80,7 @@ let PosSpeedY = 5;
 // Once at the beginning of the program
 function setup() {
         createCanvas(640, 640);
+        colorMode(HSB,100);
 
 
 }
@@ -61,31 +88,33 @@ function setup() {
 // Every frame of the program
 function draw() {
 
-        background('#ede8d0');
+        Bg();
         drawTheEgg();
         TheBouncing();
         EggHatched();
 
-        let ImgW = map(mouseX, 0, width, 0, 360);
-        let ImgH = map(mouseY, 0, height, 20, 300);
 
-        
 
     
 }
 
 
+/**
+ * Draw Background
+ */
+function Bg(){
+
+  let mapColor = map(mouseX, 0, width, 0, 100);
+
+  background(mapColor, 80, 100);
+
+
+}
+
 /*
 *Draws a The E G G
 */
 function drawTheEgg(){
-
-
-  // Scale the mouseX value from 0 to 720 to a range between 0 and 360
-  let circleHue = map(mouseX, 0, width, 0, 360);
-
-  // Scale the mouseY value from 0 to 400 to a range between 20 and 300
-  let diameter = map(mouseY, 0, height, 20, 300);
 
         push();
         ellipse(theEgg.x, theEgg.y, theEgg.size.w/2, theEgg.size.h/2);
@@ -140,6 +169,9 @@ function TheBouncing(){
 
                         console.log('It clicked!')
                           image(imgDK, imgDK.x-100, imgDK.y-100);
+                          image(imgDK, imgDK.x-200, imgDK.y-200);
+                          image(imgDK, imgDK.x-20, imgDK.y-200);
+                          image(imgDK, imgDK.x-100, imgDK.y-300);
                           
                           push()
                           imgDK.resize(200, 200);
@@ -157,6 +189,14 @@ function TheBouncing(){
 
 
          }
+
+
+         function keyPressed() {
+                if( key === 'q'){
+                     console.log('It works!!!')   
+                
+                }
+              }
 
 
 
