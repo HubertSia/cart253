@@ -6,7 +6,11 @@ Hubert Sia
 
 ## Description
 
-The egg eperience that hatches Donkey Kong
+The egg eperience that hatches Donkey Kong 
+A colorful EGG,
+Click the left mouse button to see M O N K E Y
+Move around the mouse to change the background color
+Let's make our great nation EGGTAST
 
 ## Credits
 This project uses [p5.js](https://p5js.org).
