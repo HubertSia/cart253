@@ -37,30 +37,10 @@ let imgDK = {
 
 };
 
-//let imgLuigi = {
-        // Image x and y is dependant to the position of the Egg
-  //      x: undefined,
-    //    y: undefined,
-
-//};
-
-//let imgMario = {
-  //      // Image x and y is dependant to the position of the Egg
-    //    x: undefined,
-      //  y: undefined,
-
-//};
 
 
-//var imageList = [];
-
-
-// Load the images
+// Load the image
 function preload() {
-        //imageList[0] = loadImage('/topics/personal/egg/assets/images/dk_head.png');
-        //imageList[1] = loadImage('/topics/personal/egg/assets/images/luigi_head.png');
-        //imageList[2] = loadImage('/topics/personal/egg/assets/images/mario_head.png');
-
 
         imgDK = loadImage('assets/images/dk_head.png'); 
 
@@ -191,11 +171,7 @@ function TheBouncing(){
          }
 
 
-         function keyPressed() {
-                if( key === 'q'){
-                console.log('It clicks')
-                }
-              }
+
 
 
 
