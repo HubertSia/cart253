@@ -71,8 +71,10 @@ function setup() {
         //Create the canvas
         createCanvas(640, 640);
 
-        bark = loadSound('assets/sounds/bark.wav');
 
+
+        // Load my sounds
+        bark = loadSound('assets/sounds/bark.wav');
         rap = loadSound ('assets/sounds/dk-rap.wav');
 
 
@@ -116,8 +118,8 @@ function drawTheEgg(){
       
 }
 
-// Make my egg bounce
 
+// Make my egg bounce
 function TheBouncing(){
 
 
@@ -188,21 +190,21 @@ function TheBouncing(){
 
                         console.log('LMAO YOU LOOOKED!');
 
+                        // The mapping for the background color
                         let mapColor = map(mouseX, 0, width, 0, 100);
                         background(mapColor, 80, 100);
 
                         //Spawns 4 Donkey Kong Heads
-
                           image(imgDK, imgDK.x-100, imgDK.y-100);
                           image(imgDK, imgDK.x-200, imgDK.y-200);
                           image(imgDK, imgDK.x-20, imgDK.y-200);
                           image(imgDK, imgDK.x-100, imgDK.y-300);
                           
+
                           //Size of the DK head
                           //Shrink the eggs to hide behind the head
                           push()    
                           imgDK.resize(200, 200);
-
                           pop();
 
            
