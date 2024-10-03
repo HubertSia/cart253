@@ -1,18 +1,17 @@
-# BEHOLD!! EGG!!!
+# Template p5 Project
 
-Hubert Sia
+Author Name
 
-[View this project online] https://hubertsia.github.io/cart253/topics/assignments/art-jam/
+[View this project online](URL_FOR_THE_RUNNING_PROJECT)
 
 ## Description
 
-The egg eperience that hatches Donkey Kong 
-A colorful EGG,
-Click the left mouse button to see M O N K E Y
-Move around the mouse to change the background color
-Let's make our great nation EGGTASTIC
+This description should help the reader understand what the program is, what any controls do, and perhaps what the desired experience it.
 
 ## Credits
+
+This bit should describe what tools were used. For example:
+
 This project uses [p5.js](https://p5js.org).
 
 ## Attribution
