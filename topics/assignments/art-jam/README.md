@@ -2,7 +2,7 @@
 
 Hubert Sia
 
-[View this project online] https://hubertsia.github.io/cart253/topics/assignments/art-jam/
+[View this project online]: https://hubertsia.github.io/cart253/topics/assignments/art-jam/
 
 ## Description
 
@@ -17,6 +17,10 @@ This project uses [p5.js](https://p5js.org).
 
 ## Attribution
 
-This bit should attribute any assets or other elements used taken from other sources. For example:
+This bit should attribute any assets or other elements used taken from other sources.
 
-The fish images were sourced from the [Creative Commons image "Georgia Aquarium Fish"](https://search.creativecommons.org/photos/96f6f770-eac1-488c-8abb-16bee7bcc874) by Mike Johnston which is licensed with CC BY 2.0. To view a copy of this license, visit https://creativecommons.org/licenses/by/2.0/.
+DK RAP SONG from YouTube
+DK Image
+The bark.wav
+
+

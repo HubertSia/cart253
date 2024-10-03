@@ -13,7 +13,7 @@
 
 "use strict";
 
-
+// The variable state for the functions
 let mode = "egg";
 
 
@@ -33,6 +33,8 @@ let theEgg = {
         
 
 }
+
+
 
 let imgDK = {
         // Image x and y is dependant on the position of the Egg
@@ -148,15 +150,16 @@ function TheBouncing(){
          
 
 
-
+         // When the mouse button is placed. It activates 'dk' mode
          function mousePressed(){
 
                 mode = "dk";
                 rap.play();
+                bark.stop();
 
          }
 
-
+         // When the mouse button is released. It activates
          function mouseReleased(){
 
                 mode = "egg";
@@ -165,14 +168,18 @@ function TheBouncing(){
 
          }
          
+
+
+         // Function for the Donkey Kong
          function EggHatched(){
 
 
-        
+                //Follows the speed position plus 5
                 imgDK.x +=PosSpeedX + 5
                 imgDK.y +=PosSpeedY + 5
  
 
+                //DK follow the 
                 imgDK.x = theEgg.x;
                 imgDK.y = theEgg.y;
 
