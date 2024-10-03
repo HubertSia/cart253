@@ -44,8 +44,8 @@ let imgDK = {
 };
 
 
-let bark;
-
+let pong;
+let mii;
 let rap;
 
 
@@ -54,6 +54,7 @@ let rap;
 function preload() {
 
         imgDK = loadImage('assets/images/dk_head.png'); 
+        mii = loadSound ('assets/sounds/mii.mp3');
 
 }
 
@@ -74,9 +75,10 @@ function setup() {
 
 
         // Load my sounds
-        bark = loadSound('assets/sounds/bark.wav');
-        rap = loadSound ('assets/sounds/dk-rap.wav');
+        pong = loadSound ('assets/sounds/pong.mp3');
+        rap = loadSound ('assets/sounds/dk-rap.mp3');
 
+                mii.play();
 
         //We put a HSB function for more interesting visuals (also helps with the mapping)
         colorMode(HSB,100);
@@ -86,7 +88,7 @@ function setup() {
 // Every frame of the program
 function draw() {
 
-        background(220);
+        //background(220);
         TheBouncing();
         
 
@@ -134,7 +136,7 @@ function TheBouncing(){
 
           //Randomise the color of the Egg
           fill(random(255),random(255), random(255));
-          bark.play();
+          pong.play();
           
         }
 
@@ -144,7 +146,7 @@ function TheBouncing(){
           PosSpeedY = -PosSpeedY;
           // Randomise the color of the egg
           fill(random(255),random(255), random(255));
-          bark.play();
+          pong.play();
 
 
         }
@@ -157,7 +159,7 @@ function TheBouncing(){
 
                 mode = "dk";
                 rap.play();
-                bark.stop();
+                mii.pause();
 
          }
 
@@ -166,7 +168,8 @@ function TheBouncing(){
 
                 mode = "egg";
                 background(255);
-                rap.stop();
+                rap.pause();
+                mii.play();
 
          }
          
@@ -193,6 +196,7 @@ function TheBouncing(){
                         // The mapping for the background color
                         let mapColor = map(mouseX, 0, width, 0, 100);
                         background(mapColor, 80, 100);
+                        pong.stop();
 
                         //Spawns 4 Donkey Kong Heads
                           image(imgDK, imgDK.x-100, imgDK.y-100);
