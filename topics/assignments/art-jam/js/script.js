@@ -3,15 +3,19 @@
  * Hubert Sia
  * 
  *A colorful EGG,
-*Click the left mouse button to see M O N K E Y
-*Move around the mouse to change the background color
-*Let's make our great nation EGGTASTIC!!!
+ *Click the left mouse button to see M O N K E Y
+ *Move around the mouse to change and to pick the background color
+ *Let's make our great nation EGGTASTIC!!!
  * 
  * 
  * 
  */
 
 "use strict";
+
+
+let mode = "egg";
+
 
 
 
@@ -31,11 +35,16 @@ let theEgg = {
 }
 
 let imgDK = {
-        // Image x and y is dependant to the position of the Egg
+        // Image x and y is dependant on the position of the Egg
         x: undefined,
         y: undefined,
 
 };
+
+
+let bark;
+
+let rap;
 
 
 
@@ -57,7 +66,15 @@ let PosSpeedY = 5;
 
 // Once at the beginning of the program
 function setup() {
+        //Create the canvas
         createCanvas(640, 640);
+
+        bark = loadSound('assets/sounds/bark.wav');
+
+        rap = loadSound ('assets/sounds/dk-rap.wav');
+
+
+        //We put a HSB function for more interesting visuals (also helps with the mapping)
         colorMode(HSB,100);
 
 }
@@ -65,36 +82,30 @@ function setup() {
 // Every frame of the program
 function draw() {
 
-        Bg();
-        drawTheEgg();
+        background(220);
         TheBouncing();
-        EggHatched();
+        
 
+        if (mode === "egg"){
+             drawTheEgg();
+        }
+        else if ( mode === "dk"){
+                EggHatched();
+        }
 
 
     
 }
 
 
-/**
- * Draw Background
- */
-function Bg(){
-
-  let mapColor = map(mouseX, 0, width, 0, 100);
-
-  background(mapColor, 80, 100);
-
-
-}
 
 /*
 *Draws a The E G G
 */
 function drawTheEgg(){
 
-        push();
         
+        push();
         ellipse(theEgg.x, theEgg.y, theEgg.size.w/2, theEgg.size.h/2);
         //console.log('ellipse');
         pop();
@@ -119,6 +130,7 @@ function TheBouncing(){
 
           //Randomise the color of the Egg
           fill(random(255),random(255), random(255));
+          bark.play();
           
         }
 
@@ -128,14 +140,35 @@ function TheBouncing(){
           PosSpeedY = -PosSpeedY;
           // Randomise the color of the egg
           fill(random(255),random(255), random(255));
+          bark.play();
+
 
         }
          }   
          
+
+
+
+         function mousePressed(){
+
+                mode = "dk";
+                rap.play();
+
+         }
+
+
+         function mouseReleased(){
+
+                mode = "egg";
+                background(255);
+                rap.stop();
+
+         }
          
          function EggHatched(){
 
 
+        
                 imgDK.x +=PosSpeedX + 5
                 imgDK.y +=PosSpeedY + 5
  
@@ -145,27 +178,30 @@ function TheBouncing(){
 
 
 
-                if (mouseIsPressed){
 
-                        console.log('It clicked!')
+                        console.log('LMAO YOU LOOOKED!');
+
+                        let mapColor = map(mouseX, 0, width, 0, 100);
+                        background(mapColor, 80, 100);
+
+                        //Spawns 4 Donkey Kong Heads
+
                           image(imgDK, imgDK.x-100, imgDK.y-100);
                           image(imgDK, imgDK.x-200, imgDK.y-200);
                           image(imgDK, imgDK.x-20, imgDK.y-200);
                           image(imgDK, imgDK.x-100, imgDK.y-300);
                           
-                          push()       
-                          
+                          //Size of the DK head
+                          //Shrink the eggs to hide behind the head
+                          push()    
                           imgDK.resize(200, 200);
-                          theEgg.size.h = 0;
-                          theEgg.size.w = 0;
+
                           pop();
 
-                        
-                }else{
+           
 
-                        theEgg.size.w = 200;
-                        theEgg.size.h = 290;
-                }
+                
+                
 
 
          }

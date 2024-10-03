@@ -18,6 +18,14 @@ let gameOver = false;
  */
 function setup() {
   createCanvas(400, 400);
+
+  document.addEventListener('keydown', endGame);
+  document.addEventListener('keyup', endGame);
+  document.addEventListener('mousedown', endGame);
+  document.addEventListener('mousemove', endGame);
+  window.addEventListener('online', endGame);
+  window.addEventListener('offline', endGame);
+
 }
 
 /**
@@ -65,7 +73,7 @@ function displayScore() {
 /**
  * Game over when any key is pressed
  */
-function keyPressed() {
+function keyPressed(event) {
     gameOver = true;
 }
 
@@ -74,9 +82,12 @@ function keyPressed() {
 /**
  * Game over when mouse is pressed
  */
-function mousePressed() {
+function mousePressed(event) {
     gameOver = true;
 }
 
 
 
+function endGame(){
+  gameOver = true;
+}
