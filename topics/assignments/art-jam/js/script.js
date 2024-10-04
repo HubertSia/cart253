@@ -1,5 +1,5 @@
 /**
- * Behold! EGG
+ * Behold! Self-Drawing E G G and M O N K E Y !!!
  * Hubert Sia
  * 
  *A colorful EGG,
@@ -13,7 +13,7 @@
 
 "use strict";
 
-// The variable state for the functions
+// The variable state mode
 let mode = "egg";
 
 
@@ -35,7 +35,7 @@ let theEgg = {
 }
 
 
-
+// Variable of the DK image
 let imgDK = {
         // Image x and y is dependant on the position of the Egg
         x: undefined,
@@ -43,14 +43,14 @@ let imgDK = {
 
 };
 
-
+//Empty Variables for the musics
 let pong;
 let mii;
 let rap;
 
 
 
-// Load the image
+// Preload the image and the music
 function preload() {
 
         imgDK = loadImage('assets/images/dk_head.png'); 
@@ -78,6 +78,7 @@ function setup() {
         rap = loadSound ('assets/sounds/dk-rap.mp3');
         pong = loadSound ('assets/sounds/pong.mp3');
 
+        // Play mii.mp3 at the start
         mii.play();
 
 
@@ -89,10 +90,11 @@ function setup() {
 // Every frame of the program
 function draw() {
 
-        //background(220);
         TheBouncing();
         
 
+
+        //Activated the stater accordingly
         if (mode === "egg"){
              drawTheEgg();
         }
@@ -113,10 +115,9 @@ function draw() {
 */
 function drawTheEgg(){
 
-        
+        // The ellipse takes the position of X and Y of the Egg along with his size
         push();
         ellipse(theEgg.x, theEgg.y, theEgg.size.w/2, theEgg.size.h/2);
-        //console.log('ellipse');
         pop();
 
 
@@ -124,7 +125,9 @@ function drawTheEgg(){
 }
 
 
-// Make my egg bounce
+/*
+* Function the makes the E G G bounce
+*/
 function TheBouncing(){
 
 
@@ -138,16 +141,18 @@ function TheBouncing(){
           PosSpeedX = -PosSpeedX;
 
           //Randomise the color of the Egg
+          //Play pong.mp3 on hit
           fill(random(255),random(255), random(255));
           pong.play();
           
         }
 
-        // If Egg's Y position reach the limite of the height of the canvas OR reaches
+        // If Egg's Y position reach the limite of the height of the canvas
         // The Egg bounce off the wall
         if (theEgg.y > height - theEgg.size.h/5 || theEgg.y < theEgg.size.h/5) {
           PosSpeedY = -PosSpeedY;
           // Randomise the color of the egg
+          //Play pong.mp3 on hit
           fill(random(255),random(255), random(255));
           pong.play();
 
@@ -166,7 +171,7 @@ function TheBouncing(){
 
          }
 
-         // When the mouse button is released. It activates
+         // When the mouse button is released. It activates 'egg' mode
          function mouseReleased(){
 
                 mode = "egg";
@@ -187,7 +192,7 @@ function TheBouncing(){
                 imgDK.y +=PosSpeedY + 5
  
 
-                //DK follow the 
+                //DK follow the EGG
                 imgDK.x = theEgg.x;
                 imgDK.y = theEgg.y;
 
@@ -197,6 +202,7 @@ function TheBouncing(){
                         console.log('LMAO YOU LOOOKED!');
 
                         // The mapping for the background color
+                        // It changes the background according to the value XY mouse
                         let mapColor = map(mouseX, 0, width, 0, 100);
                         background(mapColor, 80, 100);
                         pong.stop();
@@ -209,7 +215,6 @@ function TheBouncing(){
                           
 
                           //Size of the DK head
-                          //Shrink the eggs to hide behind the head
                           push()    
                           imgDK.resize(200, 200);
                           pop();
