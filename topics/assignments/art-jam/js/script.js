@@ -163,6 +163,7 @@ function TheBouncing(){
 
 
          // When the mouse button is placed. It activates 'dk' mode
+         //Plays the rap song and pauses the mii music
          function mousePressed(){
 
                 mode = "dk";
@@ -172,6 +173,7 @@ function TheBouncing(){
          }
 
          // When the mouse button is released. It activates 'egg' mode
+         //Pauses the rap song and plays the mii music
          function mouseReleased(){
 
                 mode = "egg";
