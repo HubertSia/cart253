@@ -75,10 +75,11 @@ function setup() {
 
 
         // Load my sounds
-        pong = loadSound ('assets/sounds/pong.mp3');
         rap = loadSound ('assets/sounds/dk-rap.mp3');
+        pong = loadSound ('assets/sounds/pong.mp3');
 
-                mii.play();
+        mii.play();
+
 
         //We put a HSB function for more interesting visuals (also helps with the mapping)
         colorMode(HSB,100);
@@ -102,6 +103,8 @@ function draw() {
 
     
 }
+
+
 
 
 
