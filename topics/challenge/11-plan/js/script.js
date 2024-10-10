@@ -84,8 +84,7 @@ function setup() {
 function draw() {
     if( state === "title" ){
         title();
-    }
-    else if( state === "game" ){
+    }else if( state === "game" ){
         game();
     }
 }
@@ -117,6 +116,7 @@ function game(){
     drawScore();    
     moveFrog();
     drawFrog();
+
 
 
 }
