@@ -1,9 +1,9 @@
 /**
- * Title of Project
- * Author Name
+ * This is a testing ground
  * 
- * HOW EMBARRASSING! I HAVE NO DESCRIPTION OF MY PROJECT!
- * PLEASE REMOVE A GRADE FROM MY WORK IF IT'S GRADED!
+ *
+ *
+ *
  */
 
 "use strict";
@@ -25,4 +25,5 @@ function draw() {
   let volume = mic.getLevel()*1000;
   background(220);
   circle(200,200,volume)
+  console.log(volume);
 }
