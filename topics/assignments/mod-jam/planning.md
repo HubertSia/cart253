@@ -4,7 +4,9 @@
 
 The initial idea:
 
-> Frog eating flies
+> Moshi (bootleg Yoshi) eating apple-wings
+> Not letting Browser (bootleg Bowser) graaping 10 apple-wings
+
 
 ## Experience design
 
