@@ -11,7 +11,7 @@ Make sure Moshi eats as possible before Browser gets all 10 apple-wings and blow
 **Ideas and features**
 
 - With the Frogfrogfrog project as our base template. It's going to be revamp game with a bootleg characters of Yoshi and Bowser
-- A title, instructions, and ending screen.
+- A title with instructions, and ending screen.
 - A mic control system wich allows the players to shout to activate the tongue. (Suggested to use the map function)
 - The sound plays when ate the flying apples
 - Apple wings spawns at a random positions (from left to right or right to left)

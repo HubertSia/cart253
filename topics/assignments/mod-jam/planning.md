@@ -20,7 +20,7 @@ Basic things to do:
 
 - Draw the Moshi (Bascically draw the head of bootleg Yoshi)
 - Draw Moshi's tongue
-- Move the frog with the mouse movement (X axis)
+- Move the Moshi with the mouse movement (X axis)
 - Move the apple-wings, it will spawn on both edges of the canvas (moving in a random Y Axis, and flying on a linear direction)
 - Figure out if the tongue hits the fly?
 - Adding a score points of 10
@@ -61,54 +61,128 @@ What is there?
 - How much Moshi missed the apple-wings before 10
 - States will sets the conditions
 
-frog
-    body
-        x
-        y
-        size
-    tongue
-        x
-        y
-        size
-        speed
-        state
+Moshi
+body
+x
+y
+size
+tongue
+x
+y
+size
+speed
+state
 
-fly
-    x
-    y
-    size
-    speed
+apple-wings
+x
+y
+size
+speed
+
+score = 0
+
+miss = 10
+
+state = title
+
 ```
 
 What happens in this project?
 
 - Start (setup)
   - Create a canvas
+  - Reset the fly position
+
+
 - Every frame (draw)
-  - Draw the background
-  - Move and draw the fly
-    - Add the fly's speed to it x
-    - Draw a circle at the fly's position with its size (black)
-  - Move and draw the frog
-    - Move the frog to the mouse's x position
-    - Draw a green circle at the frog's position with its size
-  - Move and draw the tongue
-    - Move the tongue
-      - If the tongue isn't launched, just do nothing... don't draw it
-      - If the tongue is launched, move it up (by its speed)
-      - If the tongue is coming back, move it down (by its speed)
-      - If the tongue hits the top, send it back down
-      - If the tongue gets back to the frog, then stop it
-    - Draw the tongue
-      - Draw a line from the frog to the tongue position
-      - Draw a circle at the end of the tongue
-  - Check if the tongue hit the fly
-    - Check if tongue circle and fly circle overlap
-    - If they do, then reset the fly
-    - If they don't.... nothing... just keep being a tongue
+  -if my state is "title"
+    - Load the title screen
+  if my state is "game"
+   -Load the game sequence
+  if my state is "game over"
+    - Load my Game Over sequence
 
-Events
 
-- If the user clicks the mouse
+
+
+
+
+- Creating my function for the "title" state = the title screen
+    - Draw the background (make it interesting)
+    - Draw the title of the game
+    - Draw the "start" title
+    - Draw both Moshi and Browser
+
+
+    If my mouse is pressed once
+      Load my "game" state
+
+
+
+- Creating my function for the "game" state = the game sequence
+  -Draw the background
+  -Move and draw the speed of trhe apple-wings
+  -Move and draw Moshi's tongue
+  -Check if the tongue overlaps the apple-wings
+  -Draw the apple wings
+  -Move Moshi's head
+  -Draw Moshi's head
+  -Check if the apple-wings has crossed to the other side
+
+
+
+
+- Move and draw the apple-wings
+  - Add the apple-wings's speed to it x
+  - Draw a circle at the apple-wings's position with its size (red)
+
+- Move and Moshi's head
+  - Move the Moshi to the mouse's x position
+  - Draw a red circle at the Moshi's position with its size
+  - Draw the left eye of Moshi
+  - Draw the right eye of Moshi
+
+- Move and draw the tongue
+  - Move the tongue
+    - If the tongue isn't launched, just do nothing... don't draw it
+    - If the tongue is launched, move it up (by its speed)
+    - If the tongue is coming back, move it down (by its speed)
+    - If the tongue hits the top, send it back down
+    - If the tongue gets back to the frog, Moshi stop it
+
+  - Draw the tongue
+    - Draw a line from the Moshi to the tongue position
+    - Draw a circle at the end of the tongue
+
+- Check if the tongue hit the apple-wing
+  - Check if tongue circle and hit the apple-wing circle overlap
+  - If they do, then reset the hit the apple-wing
+  - If they don't.... nothing... just keep being a tongue
+  - Add a point to the score point
+
+
+
+- Check if the apple-wings goes to the other side
+  - Check if apple-wings and hit the opposite side from there spawn
+  - If they do, then reset the hit the apple-wing
+
+
+
+  - Start counting but if it reaches to 10
+    Load the "Game Over" state
+
+
+
+- Creating my function for the "title" state = the title screen
+    - Draw the background (make it interesting)
+    - Draw the title of the game
+    - Draw the "start" title
+    - Draw both Moshi and Browser
+
+
+
+
+
+- If the user shout at a certain frequency with the mic
   - If the tongue is still inside the frog's mouth
     - Launch the tongue
