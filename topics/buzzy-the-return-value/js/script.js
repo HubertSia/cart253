@@ -8,25 +8,34 @@
 "use strict";
 
 // Our flies that will buzz around
-let buzzyTheFly = {
-    x: 200,
-    y: 200,
-    size: 20,
-    buzziness: 3
-};
 
-let jazzyTheFly = {
-    x: 200,
-    y: 200,
-    size: 20,
-    buzziness: 3
-};
+
+let buzzyTheFly = undefined;
+let jazzyTheFly = undefined;
 
 /**
  * Create a canvas
  */
 function setup() {
     createCanvas(400, 400);
+        // A pretty calm fly
+    buzzyTheFly = createFly(2);
+    // A not calm fly
+    jazzyTheFly = createFly(10);
+
+}
+
+function createFly(flybuzziness) {
+    let fly = {
+        // Position (random)
+        x: random(100, width - 100),
+        y: random(100, width - 100),
+        // Size (default)
+        size: 20,
+        // How much to move per frame (parameter)
+        buzziness: flybuzziness
+    };
+    return fly;
 }
 
 /**
