@@ -15,6 +15,18 @@ let buzzyTheFly = {
     buzziness: 4
 };
 
+
+
+
+let jazzyTheFly = {
+    x: 200,
+    y: 250,
+    size: 10,
+    buzziness: 10
+};
+
+
+
 /**
  * Create a canvas
  */
@@ -29,13 +41,38 @@ function draw() {
     background("#87ceeb");
 
     // Move buzzy
-    buzzyTheFly.x += random(-buzzyTheFly.buzziness, buzzyTheFly.buzziness);
-    buzzyTheFly.y += random(-buzzyTheFly.buzziness, buzzyTheFly.buzziness);
+    moveFly(buzzyTheFly);
+    moveFly(jazzyTheFly);
 
     // Draw buzzy
+    drawFly(buzzyTheFly);
+    drawFly(jazzyTheFly);
+
+}
+
+
+
+
+
+/**
+ * Move the fly passed in as an argument by updating its position
+ * When buzzyTheFly is passed in, that means we will be changing
+ * buzzyTheFly's position!
+ */
+function moveFly(fly) {
+    fly.x += random(-fly.buzziness, fly.buzziness);
+    fly.y += random(-fly.buzziness, fly.buzziness);
+}
+
+
+
+/**
+ * Draw the fly passed in as an argument
+ */
+function drawFly(fly) {
     push();
     noStroke();
     fill(0);
-    ellipse(buzzyTheFly.x, buzzyTheFly.y, buzzyTheFly.size);
+    ellipse(fly.x, fly.y, fly.size);
     pop();
 }
