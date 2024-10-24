@@ -1,5 +1,5 @@
 /**
- * Frogfrogfrog
+ * Moshi vs Browser
  * Pippin Barr
  * 
  * A game of catching flies with your frog-tongue
@@ -8,6 +8,25 @@
  * - Move the frog with your mouse
  * - Click to launch the tongue
  * - Catch flies
+ * 
+ * Idea:
+ * Add a score
+ * 
+ * 
+ * Plan:
+ * Every time you catch a fly a number goes by 1 ( It's a counter )
+ * Display score (top right corner)
+ * (Other ideas: Frog loses after three flies escape)
+ * 
+ * Pseudocode:
+ * score = 0
+ * 
+ * if (the frog catches a fly)
+ *     score = score + 1
+ * 
+ * drawScore()
+ *   display the score in the tio right corner
+ * 
  * 
  * Made with p5
  * https://p5js.org/
@@ -43,6 +62,15 @@ const fly = {
     speed: 3
 };
 
+
+
+// The current score
+let score = 0;
+
+// Current state
+let state = 'title';
+
+
 /**
  * Creates the canvas and initializes the fly
  */
@@ -54,14 +82,45 @@ function setup() {
 }
 
 function draw() {
-    background("#87ceeb");
-    moveFly();
-    drawFly();
-    moveFrog();
-    moveTongue();
-    drawFrog();
-    checkTongueFlyOverlap();
+    if( state === "title" ){
+        title();
+    }else if( state === "game" ){
+        game();
+    }
 }
+
+
+
+function title(){
+    background(127);
+
+    push();
+    text("FROGFROGFROG", 100, 100);
+    pop();
+
+
+    if(mouseIsPressed){
+        state = "game";
+    }
+}
+
+
+
+function game(){
+    
+    background("#87ceeb");
+    moveFly();    
+    moveTongue();
+    checkTongueFlyOverlap();
+    drawFly();
+    drawScore();    
+    moveFrog();
+    drawFrog();
+
+
+
+}
+
 
 /**
  * Moves the fly according to its speed
@@ -86,6 +145,9 @@ function drawFly() {
     ellipse(fly.x, fly.y, fly.size);
     pop();
 }
+
+
+
 
 /**
  * Resets the fly to the left with a random y
@@ -165,6 +227,11 @@ function checkTongueFlyOverlap() {
     // Check if it's an overlap
     const eaten = (d < frog.tongue.size/2 + fly.size/2);
     if (eaten) {
+
+        // Increase score
+        score = score + 1;
+        console.log(score);
+
         // Reset the fly
         resetFly();
         // Bring back the tongue
@@ -179,4 +246,17 @@ function mousePressed() {
     if (frog.tongue.state === "idle") {
         frog.tongue.state = "outbound";
     }
+}
+
+
+
+
+
+// the score mechanic
+function drawScore(){
+    push();
+    textAlign(RIGHT, TOP);
+    textSize(32);
+    text(score, width, 0);
+    pop();
 }

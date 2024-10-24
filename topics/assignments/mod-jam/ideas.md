@@ -2,11 +2,11 @@
 
 **Moshi tries to eat apples as much as possible before Browser get**
 
-The players are playing as Moshi, the friendly dinosaur, is very hungry. So he is going to eat some apple-wings in a local forest.
+The players are playing as Moshi, the friendly dinosaur, he is very hungry. So he is going to eat some apple-wings in a local forest.
 
-Suddenly, a the big bad turtle, Browser, tries to collect the apple-wings for his personal gains.
+Suddenly, a big bad turtle, Browser, tries to collect the apple-wings for his personal gains.
 
-Make sure Moshi eats as possible before Browser gets all 10 apple-wings and blows up the forest
+Make sure Moshi eats as mush as possible before Browser gets all 10 apple-wings and blows up the forest
 
 **Ideas and features**
 
