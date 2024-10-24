@@ -45,10 +45,12 @@ function draw() {
     movePaddle(paddle);
     moveBall(ball);
 
+    drawBlock(paddle);
+    drawBlock(ball);
+
     handleBounce(ball, paddle);
 
-    drawPaddle(paddle);
-    drawBall(ball);
+
 }
 
 /**
@@ -91,4 +93,10 @@ function drawBall(ball) {
     fill("pink");
     rect(ball.x, ball.y, ball.width, ball.height);
     pop();
+}
+
+
+function drawBlock(paddle, ball){
+    drawPaddle(paddle);
+    drawBall(ball);
 }
