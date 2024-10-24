@@ -50,19 +50,20 @@ const browser = {
         size: 150
     }
 }
-// Our applewing
+// Our apple
 // Has a position, size, and speed of horizontal movement
-const applewing = {
-    x: 0,
-    y: 200, // Will be random
+const apple = {
+    x: 200,
+    y: 520, // Will be random
     size: 10,
-    speed: 3
+    speed: 7
 };
 
 
 
 // The current score
 let score = 0;
+let miss = 0;
 
 // Current state
 let state = 'title';
@@ -75,7 +76,7 @@ function setup() {
     createCanvas(640, 480);
 
     // Give the fly its first random position
-    resetAppleFly();
+    resetApple();
 }
 
 function draw() {
@@ -85,7 +86,7 @@ function draw() {
         game();
     }else if( state === "gameover" ){
     gameover();
-}
+    }
 }
 
 
@@ -94,9 +95,12 @@ function title(){
     background(127);
 
     push();
-    text("FROGFROGFROG", 100, 100);
+    textAlign(CENTER);
+    text("Don't wake up Browser", width / 2, height / 2);
     pop();
 
+    miss = 0;
+    score = 0;
 
     if(mouseIsPressed){
         state = "game";
@@ -108,14 +112,13 @@ function title(){
 function game(){
     
     background("#87ceeb");
-    moveAppleWing();    
+    moveApple();    
     moveTongue();
-    checkTongueAppleWingOverlap();
-    drawAppleWing();
+    checkTongueAppleOverlap();
+    drawApple();
     drawScore();    
     moveMoshi();
     drawMoshi();
-
 
 
 }
@@ -125,23 +128,32 @@ function game(){
  * Moves the fly according to its speed
  * Resets the fly if it gets all the way to the right
  */
-function moveAppleWing() {
+function moveApple() {
     // Move the fly
-    applewing.x += applewing.speed;
+    apple.y += apple.speed;
     // Handle the fly going off the canvas
-    if (applewing.x > width) {
-        resetAppleFly();
+    if (apple.y > width) {
+        resetApple();
+
+            // Increase miss
+            miss = miss + 1;
+            console.log(miss);
+
+
+            if(miss === 10){
+                state = "gameover";
+            }
     }
 }
 
 /**
  * Draws the fly as a black circle
  */
-function drawAppleWing() {
+function drawApple() {
     push();
     noStroke();
     fill("#000000");
-    ellipse(applewing.x, applewing.y, applewing.size);
+    ellipse(apple.x, apple.y, apple.size);
     pop();
 }
 
@@ -151,9 +163,11 @@ function drawAppleWing() {
 /**
  * Resets the fly to the left with a random y
  */
-function resetAppleFly() {
-    applewing.x = 0;
-    applewing.y = random(0, 300);
+function resetApple() {
+    apple.y = 0;
+    apple.x = random(0, 640);
+
+    
 }
 
 /**
@@ -220,19 +234,19 @@ function drawMoshi() {
 /**
  * Handles the tongue overlapping the fly
  */
-function checkTongueAppleWingOverlap() {
+function checkTongueAppleOverlap() {
     // Get distance from tongue to fly
-    const d = dist(moshi.tongue.x, moshi.tongue.y, applewing.x, applewing.y);
+    const d = dist(moshi.tongue.x, moshi.tongue.y, apple.x, apple.y);
     // Check if it's an overlap
-    const eaten = (d < moshi.tongue.size/2 + applewing.size/2);
+    const eaten = (d < moshi.tongue.size/2 + apple.size/2);
     if (eaten) {
 
         // Increase score
         score = score + 1;
-        console.log(score);
+        ///console.log(score);
 
         // Reset the fly
-        resetAppleFly();
+        resetApple();
         // Bring back the tongue
         moshi.tongue.state = "inbound";
     }
@@ -248,9 +262,6 @@ function mousePressed() {
 }
 
 
-
-
-
 // the score mechanic
 function drawScore(){
     push();
@@ -258,4 +269,22 @@ function drawScore(){
     textSize(32);
     text(score, width, 0);
     pop();
+}
+
+
+
+function gameover(){
+
+    background(127);
+
+    push();
+    textAlign(CENTER);
+    text("GAME OVER", width / 2, height / 2);
+    pop();
+
+
+    if(mouseIsPressed){
+        state = "title";
+    }
+
 }
