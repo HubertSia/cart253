@@ -57,24 +57,40 @@ function draw() {
  * Moves the paddle
  */
 function movePaddle(paddle) {
-
+  if (keyIsDown(LEFT_ARROW)) {
+    paddle.x -= 5;
+  }
+  else if (keyIsDown(RIGHT_ARROW)) {
+    paddle.x += 5;
+  }
 }
 
 /**
  * Moves the ball
  */
 function moveBall(ball) {
-
+    
+    ball.x += ball.velocity.x;
+    ball.y += ball.velocity.y;
 }
 
 function handleBounce(ball, paddle) {
 
 }
 
+
+
+function drawBlock(paddle, ball){
+
+    
+    drawPaddle();
+    drawBall();
+}
+
 /**
  * Draws the paddle on the canvas
  */
-function drawPaddle(paddle) {
+function drawPaddle() {
     push();
     rectMode(CENTER);
     noStroke();
@@ -86,7 +102,7 @@ function drawPaddle(paddle) {
 /**
  * Draws the ball on the canvas
  */
-function drawBall(ball) {
+function drawBall() {
     push();
     rectMode(CENTER);
     noStroke();
@@ -95,8 +111,3 @@ function drawBall(ball) {
     pop();
 }
 
-
-function drawBlock(paddle, ball){
-    drawPaddle(paddle);
-    drawBall(ball);
-}

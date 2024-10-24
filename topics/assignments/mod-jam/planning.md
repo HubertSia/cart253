@@ -50,18 +50,32 @@ Questions:
 
 What is there?
 
-- Moshi
+- Moshi (in game)
+
   - Position and size
   - Position and size of tongue
-  - What is the tongue doing?
+  - The tongue reaches for the apple
+
+- Moshi (title screen)
+
+  - Position and size
+
+- Browser (title screen)
+
+  - Position and size
+
 - The apple-wings
+
   - Position and the size
   - Velocity
+
 - The score on how much Moshi consumed the apple-wings
+
 - How much Moshi missed the apple-wings before 10
+
 - States will sets the conditions
 
-Moshi
+Moshi (in game)
 body
 x
 y
@@ -72,6 +86,18 @@ y
 size
 speed
 state
+
+Moshi (title screen)
+body
+x
+y
+size
+
+Browser (title screen)
+body
+x
+y
+size
 
 apple-wings
 x
@@ -111,7 +137,9 @@ What happens in this project?
     - Draw the background (make it interesting)
     - Draw the title of the game
     - Draw the "start" title
-    - Draw both Moshi and Browser
+    - Draw the "instruction"
+    - Draw both Moshi (title screen) and Browser (title screen)
+    - Load title screen music
 
 
     If my mouse is pressed once
@@ -119,9 +147,10 @@ What happens in this project?
 
 
 
+
 - Creating my function for the "game" state = the game sequence
   -Draw the background
-  -Move and draw the speed of trhe apple-wings
+  -Move and draw the speed of the apple-wings
   -Move and draw Moshi's tongue
   -Check if the tongue overlaps the apple-wings
   -Draw the apple wings
@@ -169,15 +198,15 @@ What happens in this project?
 
 
   - Start counting but if it reaches to 10
-    Load the "Game Over" state
+    - Load the "Game Over" state
 
 
+- Creating the "Game Over" function
+    - Draw background (make it interesting)
+    - Load title game over
+    - Draw Browser
 
-- Creating my function for the "title" state = the title screen
-    - Draw the background (make it interesting)
-    - Draw the title of the game
-    - Draw the "start" title
-    - Draw both Moshi and Browser
+
 
 
 
@@ -186,3 +215,4 @@ What happens in this project?
 - If the user shout at a certain frequency with the mic
   - If the tongue is still inside the frog's mouth
     - Launch the tongue
+```
