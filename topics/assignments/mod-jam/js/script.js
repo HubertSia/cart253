@@ -70,14 +70,10 @@ const moshi = {
     }
 };
 
-const browser = {
-    // The frog's body has a position and size
-    body: {
-        x: 320,
-        y: 260,
-        size: 150
-    }
-}
+let imgBrowser = {
+    x: 320,
+    y: 260,
+};
 // Our apple
 // Has a position, size, and speed of horizontal movement
 const apple = {
@@ -105,6 +101,7 @@ const shoutThreshold = 0.04;
 let font
 
 function preload() {
+    imgBrowser = loadImage('assets/images/clown.png');
     font = loadFont('assets/fonts/minecraft.ttf');
 }
 
@@ -388,8 +385,10 @@ function drawMiss(){
 
 
 function gameover(){
+    image(imgBrowser, imgBrowser.x, imgBrowser.y);
 
     background(127);
+
 
     push();
     textAlign(CENTER);
@@ -397,11 +396,6 @@ function gameover(){
     pop();
 
 
-    push();
-    fill("#D21404");
-    noStroke();
-    ellipse(browser.body.x, browser.body.y, browser.body.size);
-    pop();
 
 
     if(mouseIsPressed){
