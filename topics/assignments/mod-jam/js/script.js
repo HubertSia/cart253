@@ -23,6 +23,10 @@
 
 "use strict";
 
+// Our microphone
+let mic;
+
+
 // Our frog
 const moshi = {
     // The frog's body has a position and size
@@ -68,6 +72,9 @@ let miss = 0;
 // Current state
 let state = 'title';
 
+ // Threshold based on your microphone sensitivity
+const shoutThreshold = 0.04;
+
 
 /**
  * Creates the canvas and initializes the fly
@@ -77,6 +84,12 @@ function setup() {
 
     // Give the fly its first random position
     resetApple();
+
+    // Our microphone is our audio 
+    mic = new p5.AudioIn();
+    mic.start();
+
+
 }
 
 function draw() {
@@ -119,7 +132,7 @@ function game(){
     drawScore();    
     moveMoshi();
     drawMoshi();
-
+    checkVolume();
 
 }
 
@@ -253,14 +266,14 @@ function checkTongueAppleOverlap() {
 }
 
 /**
- * Launch the tongue on click (if it's not launched yet)
+ * Launch the tongue on when my mic hears a sound (if it's not launched yet)
  */
-function mousePressed() {
-    if (moshi.tongue.state === "idle") {
+function checkVolume(){
+    let volume = mic.getLevel();
+    if (volume > shoutThreshold && moshi.tongue.state === "idle") {
         moshi.tongue.state = "outbound";
-    }
 }
-
+}
 
 // the score mechanic
 function drawScore(){
