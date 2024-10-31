@@ -23,8 +23,19 @@
 
 "use strict";
 
-// Our microphone
-let mic;
+
+const messages = [
+
+    "Well you tried...",
+    "Well, at least Browser will settle you for breakfest",
+    "Press 'X' for a free cookie during gameplay ",
+    "HIPPITY HOPPITY, here goes your life ",
+    "Am I getting sue by Nintendo© for this?",
+    "When life gives you apples, do not wake up the turtle -Sun Tzu",
+    "Moshi are you there! Moshi.... MOOOOOOSHHIIII!"
+
+];
+
 
 
 // Our frog
@@ -63,7 +74,7 @@ const browser = {
     // The frog's body has a position and size
     body: {
         x: 320,
-        y: 520,
+        y: 260,
         size: 150
     }
 }
@@ -85,8 +96,21 @@ let miss = 0;
 // Current state
 let state = 'title';
 
+// Our microphone
+let mic;
+
  // Threshold based on your microphone sensitivity
-const shoutThreshold = 0.05;
+const shoutThreshold = 0.04;
+
+let font
+
+function preload() {
+    font = loadFont('assets/fonts/minecraft.ttf');
+}
+
+
+let video;
+
 
 
 /**
@@ -95,12 +119,18 @@ const shoutThreshold = 0.05;
 function setup() {
     createCanvas(640, 480);
 
-    // Give the fly its first random position
-    resetApple();
+    video = createCapture(VIDEO);
+    video.size(640, 480);
+    video.hide();
 
     // Our microphone is our audio 
     mic = new p5.AudioIn();
     mic.start();
+
+
+    // Give the fly its first random position
+    resetApple();
+
 
 
 }
@@ -119,9 +149,14 @@ function draw() {
 
 function title(){
     background(127);
+    image(video, 0,0);
+    
 
     push();
     textAlign(CENTER);
+    fill("ffff");
+    textFont(font);
+    textSize(50);
     text("Don't wake up Browser", width / 2, height / 2);
     pop();
 
@@ -138,6 +173,9 @@ function title(){
 function game(){
     
     background("#87ceeb");
+    background(127);
+    image(video, 0,0);
+    
     moveApple();    
     moveTongue();
     checkTongueAppleOverlap();
@@ -333,7 +371,7 @@ function drawScore(){
     push();
     textAlign(RIGHT, TOP);
     textSize(32);
-    text(miss, width, 0);
+    text(score, width, 0);
     pop();
 }
 
@@ -356,6 +394,13 @@ function gameover(){
     push();
     textAlign(CENTER);
     text("GAME OVER", width / 2, height / 2);
+    pop();
+
+
+    push();
+    fill("#D21404");
+    noStroke();
+    ellipse(browser.body.x, browser.body.y, browser.body.size);
     pop();
 
 
