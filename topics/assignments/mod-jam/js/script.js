@@ -33,7 +33,7 @@ const moshi = {
     body: {
         x: 320,
         y: 520,
-        size: 150
+        size: 250
     },
     // The frog's tongue has a position, size, speed, and state
     tongue: {
@@ -43,6 +43,19 @@ const moshi = {
         speed: 20,
         // Determines how the tongue moves each frame
         state: "idle" // State can be: idle, outbound, inbound
+    },
+
+    leftEye: {
+        x: 320,
+        y: 400,
+        size: 75
+
+    },
+
+    righEye: {
+        x: 320,
+        y: 400,
+        size: 75
     }
 };
 
@@ -59,8 +72,8 @@ const browser = {
 const apple = {
     x: 200,
     y: 520, // Will be random
-    size: 10,
-    speed: 7
+    size: 30,
+    speed: 5
 };
 
 
@@ -73,7 +86,7 @@ let miss = 0;
 let state = 'title';
 
  // Threshold based on your microphone sensitivity
-const shoutThreshold = 0.04;
+const shoutThreshold = 0.05;
 
 
 /**
@@ -129,7 +142,8 @@ function game(){
     moveTongue();
     checkTongueAppleOverlap();
     drawApple();
-    drawScore();    
+    drawScore();  
+    drawMiss();  
     moveMoshi();
     drawMoshi();
     checkVolume();
@@ -188,6 +202,8 @@ function resetApple() {
  */
 function moveMoshi() {
     moshi.body.x = mouseX;
+    moshi.righEye.x = mouseX - 80;
+    moshi.leftEye.x = mouseX + 80;
 }
 
 /**
@@ -224,24 +240,61 @@ function moveTongue() {
 function drawMoshi() {
     // Draw the tongue tip
     push();
-    fill("#ff0000");
+    fill("#046200");
     noStroke();
     ellipse(moshi.tongue.x, moshi.tongue.y, moshi.tongue.size);
     pop();
 
     // Draw the rest of the tongue
     push();
-    stroke("#ff0000");
+    stroke("#046200");
     strokeWeight(moshi.tongue.size);
     line(moshi.tongue.x, moshi.tongue.y, moshi.body.x, moshi.body.y);
     pop();
 
+
     // Draw the frog's body
     push();
-    fill("#00ff00");
+    fill("#D21404");
     noStroke();
     ellipse(moshi.body.x, moshi.body.y, moshi.body.size);
     pop();
+
+    drawEyes();
+
+}
+
+function drawEyes(){
+        
+
+    
+    //Draw the eyes
+
+        push();
+        fill("#FFFFF");
+        ellipse(moshi.leftEye.x, moshi.leftEye.y, moshi.leftEye.size)
+        pop();
+
+        push();
+        ellipse(moshi.righEye.x, moshi.righEye.y, moshi.righEye.size)
+        fill("#FFFFF");
+        pop();
+
+
+    //Draw the eyes retinals
+    push();
+    fill("#000000");
+    noStroke();
+    ellipse(moshi.leftEye.x, moshi.leftEye.y, 50)
+    pop();
+
+    push();
+    fill("#000000");
+    noStroke();
+    ellipse(moshi.righEye.x, moshi.righEye.y, 50)
+    pop();
+    
+    
 }
 
 /**
@@ -280,7 +333,17 @@ function drawScore(){
     push();
     textAlign(RIGHT, TOP);
     textSize(32);
-    text(score, width, 0);
+    text(miss, width, 0);
+    pop();
+}
+
+
+// the score mechanic
+function drawMiss(){
+    push();
+    textAlign(LEFT, TOP);
+    textSize(32);
+    text(miss, width, 0);
     pop();
 }
 
