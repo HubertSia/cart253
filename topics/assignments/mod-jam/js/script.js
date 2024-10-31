@@ -385,7 +385,6 @@ function drawMiss(){
 
 
 function gameover(){
-    image(imgBrowser, imgBrowser.x, imgBrowser.y);
 
     background(127);
 
@@ -395,7 +394,12 @@ function gameover(){
     text("GAME OVER", width / 2, height / 2);
     pop();
 
+    image(imgBrowser);
 
+//Size of the DK head
+    push()    
+    imgBrowser.resize(200, 200);
+    pop();
 
 
     if(mouseIsPressed){
