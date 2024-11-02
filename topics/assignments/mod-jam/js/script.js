@@ -1,8 +1,7 @@
 /**
- * Moshi vs Browser
+ * Don't wake up Browser
  * Hubert Sia
- * 
- * Moshi th 
+ *  
  * 
  * Instructions:
  * Moshi (bootleg Yoshi) eating apple-wings
@@ -24,7 +23,7 @@
 "use strict";
 
 
-const messages = [
+const messages  = [
 
     "Well you tried...",
     "Well, at least Browser will settle you for breakfest",
@@ -32,10 +31,12 @@ const messages = [
     "HIPPITY HOPPITY, here goes your life ",
     "Am I getting sue by Nintendo© for this?",
     "When life gives you apples, do not wake up the turtle -Sun Tzu",
-    "Moshi are you there! Moshi.... MOOOOOOSHHIIII!"
+    "Moshi are you there! Moshi.... MOOOOOOSHHIIII!",
+    "The clown is Browser by the way"
 
 ];
 
+let gameoverMessage = "";
 
 
 // Our frog
@@ -44,7 +45,7 @@ const moshi = {
     body: {
         x: 320,
         y: 520,
-        size: 250
+        size: 150
     },
     // The frog's tongue has a position, size, speed, and state
     tongue: {
@@ -58,14 +59,14 @@ const moshi = {
 
     leftEye: {
         x: 320,
-        y: 400,
+        y: 450,
         size: 75
 
     },
 
     righEye: {
         x: 320,
-        y: 400,
+        y: 450,
         size: 75
     }
 };
@@ -107,6 +108,7 @@ function preload() {
 
 
 let video;
+let pixelSize = 10; 
 
 
 
@@ -118,6 +120,7 @@ function setup() {
 
     video = createCapture(VIDEO);
     video.size(640, 480);
+    video.size(640 / pixelSize, 480 / pixelSize); 
     video.hide();
 
     // Our microphone is our audio 
@@ -147,7 +150,7 @@ function draw() {
 function title(){
     background(127);
     image(video, 0,0);
-    
+    drawPixelatedVideo(); 
 
     push();
     textAlign(CENTER);
@@ -155,6 +158,17 @@ function title(){
     textFont(font);
     textSize(50);
     text("Don't wake up Browser", width / 2, height / 2);
+    pop();
+
+    push();
+    textFont(font);
+    textAlign(CENTER);
+    textSize(18);
+    fill(255);
+    text("Move Moshi with the mouse to grab ass much apples as possible", width / 2, height / 2 + 100);
+    text("Make some noice to shoot the tongue for grabbing the apple", width / 2, height / 2 + 120);
+    text("Miss 10 apples, you'll get a visite from Browser and a Game Over", width / 2, height / 2 + 140);
+
     pop();
 
     miss = 0;
@@ -172,7 +186,8 @@ function game(){
     background("#87ceeb");
     background(127);
     image(video, 0,0);
-    
+    drawPixelatedVideo(); 
+
     moveApple();    
     moveTongue();
     checkTongueAppleOverlap();
@@ -204,6 +219,8 @@ function moveApple() {
 
             if(miss === 10){
                 state = "gameover";
+                gameoverMessage = messages[floor(random(messages.length))];
+
             }
     }
 }
@@ -214,7 +231,7 @@ function moveApple() {
 function drawApple() {
     push();
     noStroke();
-    fill("#000000");
+    fill("#FF0000");
     ellipse(apple.x, apple.y, apple.size);
     pop();
 }
@@ -299,37 +316,31 @@ function drawMoshi() {
 
 }
 
-function drawEyes(){
-        
+function drawEyes() {
+    // Draw the left eye
+    push();
+    fill("#FFFFFF");
+    ellipse(moshi.leftEye.x, moshi.leftEye.y, moshi.leftEye.size);
+    pop();
 
-    
-    //Draw the eyes
+    // Draw the right eye
+    push();
+    fill("#FFFFFF");
+    ellipse(moshi.righEye.x, moshi.righEye.y, moshi.righEye.size);
+    pop();
 
-        push();
-        fill("#FFFFF");
-        ellipse(moshi.leftEye.x, moshi.leftEye.y, moshi.leftEye.size)
-        pop();
-
-        push();
-        ellipse(moshi.righEye.x, moshi.righEye.y, moshi.righEye.size)
-        fill("#FFFFF");
-        pop();
-
-
-    //Draw the eyes retinals
+    // Draw the retinas in the left and right eyes
     push();
     fill("#000000");
     noStroke();
-    ellipse(moshi.leftEye.x, moshi.leftEye.y, 50)
+    ellipse(moshi.leftEye.x, moshi.leftEye.y, 25); 
     pop();
 
     push();
     fill("#000000");
     noStroke();
-    ellipse(moshi.righEye.x, moshi.righEye.y, 50)
+    ellipse(moshi.righEye.x, moshi.righEye.y, 25); 
     pop();
-    
-    
 }
 
 /**
@@ -363,47 +374,83 @@ function checkVolume(){
 }
 }
 
-// the score mechanic
+// the score 
 function drawScore(){
     push();
+    textFont(font);
     textAlign(RIGHT, TOP);
+    fill(255);
     textSize(32);
-    text(score, width, 0);
+    text("Moshi ate: "+ score, width - 20, 20); 
     pop();
 }
 
 
-// the score mechanic
+// the miss score 
 function drawMiss(){
     push();
+    textFont(font);
     textAlign(LEFT, TOP);
+    fill(255);
     textSize(32);
-    text(miss, width, 0);
+    text("You miss: " + miss + "/10" , 20, 20); 
     pop();
 }
 
 
 
-function gameover(){
+function gameover() {
 
-    background(127);
 
+    background("#FF0000");
 
     push();
+    fill("ffff");
+    textFont(font);
     textAlign(CENTER);
+    textSize(32);
+    fill(255);
     text("GAME OVER", width / 2, height / 2);
     pop();
 
-    image(imgBrowser);
+    imgBrowser.resize(100, 100); 
+    image(imgBrowser, width / 2 - 100 + 200, height / 2 - 100);
 
-//Size of the DK head
-    push()    
-    imgBrowser.resize(200, 200);
+
+    imgBrowser.resize(100, 100); 
+    image(imgBrowser, width / 2 - 100 - 200, height / 2 - 100);
+ 
+
+    
+    // Show the random message set once during game over
+    push();
+    textFont(font);
+    textAlign(CENTER);
+    textSize(20);
+    fill(255);
+    text(gameoverMessage, width / 2, height / 2 + 100);
     pop();
 
-
-    if(mouseIsPressed){
+    if (mouseIsPressed) {
         state = "title";
     }
+}
 
+function drawPixelatedVideo() {
+
+    image(video, 0, 0, width, height);
+    video.loadPixels();
+
+    for (let y = 0; y < video.height; y += pixelSize) {
+        for (let x = 0; x < video.width; x += pixelSize) {
+            let index = (x + y * video.width) * 10;
+            let r = video.pixels[index + 0];
+            let g = video.pixels[index + 1];
+            let b = video.pixels[index + 2];
+
+            fill(r, g, b);
+            noStroke();
+            rect(x * pixelSize, y * pixelSize, pixelSize, pixelSize);
+        }
+    }
 }
