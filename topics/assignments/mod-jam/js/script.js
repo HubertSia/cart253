@@ -3,31 +3,18 @@
  * Hubert Sia
  *  
  * 
- * Instructions:
- * Moshi (bootleg Yoshi) eating apple-wings
- * Not letting Browser (bootleg Bowser) grapping 10 apple-wings
-
- * Idea:
- * With the Frogfrogfrog project as our base template. It's going to be revamp game with a bootleg characters of Yoshi and Bowser
- * A title with instructions, and ending screen.\
- *A mic control system wich allows the players to shout to activate the tongue. (Suggested to use the map function)
- *The sound plays when ate the flying apples
- *Apple wings spawns at a random positions (from left to right or right to left)
- *Make sure the players grab as much the apple-wings as possible. If players miss 10 apples, Browser wins a it is consider a game over.
- * 
- * 
  * Made with p5
  * https://p5js.org/
  */
 
 "use strict";
 
-
+// Our tables for the messages
 const messages  = [
 
     "Well you tried...",
     "Well, at least Browser will settle you for breakfest",
-    "Press 'X' for a free cookie during gameplay ",
+    "Press 'X' for a free cookie",
     "HIPPITY HOPPITY, here goes your life ",
     "Am I getting sue by Nintendo© for this?",
     "When life gives you apples, do not wake up the turtle -Sun Tzu",
@@ -36,18 +23,19 @@ const messages  = [
 
 ];
 
+//Empty array for the game over message
 let gameoverMessage = "";
 
 
-// Our frog
+// Our Moshi
 const moshi = {
-    // The frog's body has a position and size
+    // The Moshi's body has a position and size
     body: {
         x: 320,
         y: 520,
         size: 150
     },
-    // The frog's tongue has a position, size, speed, and state
+    // The Moshi's tongue has a position, size, speed, and state
     tongue: {
         x: undefined,
         y: 480,
@@ -57,6 +45,7 @@ const moshi = {
         state: "idle" // State can be: idle, outbound, inbound
     },
 
+    //Moshi's left eye
     leftEye: {
         x: 320,
         y: 450,
@@ -64,6 +53,8 @@ const moshi = {
 
     },
 
+
+    //Moshi's right eye
     righEye: {
         x: 320,
         y: 450,
@@ -71,12 +62,15 @@ const moshi = {
     }
 };
 
+
+//Browser's positions
 let imgBrowser = {
     x: 320,
     y: 260,
 };
+
 // Our apple
-// Has a position, size, and speed of horizontal movement
+// Has a position, size, and speed of vertical movement
 const apple = {
     x: 200,
     y: 520, // Will be random
@@ -86,44 +80,56 @@ const apple = {
 
 
 
-// The current score
+/**
+ * The score of points and misses
+ */
 let score = 0;
 let miss = 0;
 
 // Current state
-let state = 'title';
+let state = 'title';// State are title, game, game over
 
 // Our microphone
 let mic;
 
- // Threshold based on your microphone sensitivity
+// Threshold sensitivity
 const shoutThreshold = 0.04;
 
+// Our custom fonts
 let font
 
+
+/** 
+ * Our webcamera and pixel size 
+ */
+let video;
+let pixelSize = 10; 
+
+
+/** 
+ * Preload our fonts and images
+ */
 function preload() {
     imgBrowser = loadImage('assets/images/clown.png');
     font = loadFont('assets/fonts/minecraft.ttf');
 }
 
 
-let video;
-let pixelSize = 10; 
-
-
-
 /**
- * Creates the canvas and initializes the fly
+ * Creates the canvas, setting up our web cam and mic and reset the apples
  */
 function setup() {
+
+    //Create canvas
     createCanvas(640, 480);
 
+    // Setting up the webcam video. Hides the secondary camera
     video = createCapture(VIDEO);
     video.size(640, 480);
     video.size(640 / pixelSize, 480 / pixelSize); 
     video.hide();
 
-    // Our microphone is our audio 
+    // Set up for our microphone
     mic = new p5.AudioIn();
     mic.start();
 
@@ -135,12 +141,23 @@ function setup() {
 
 }
 
+
+
+/**
+ * Updates our game states
+ */
 function draw() {
+
+    // Draw our start screen
     if( state === "title" ){
         title();
-    }else if( state === "game" ){
+    }
+    // Draw our gameplay
+    else if( state === "game" ){
         game();
-    }else if( state === "gameover" ){
+    }
+    // Draw our game over screen
+    else if( state === "gameover" ){
     gameover();
     }
 }
@@ -167,7 +184,7 @@ function title(){
     fill(255);
     text("Move Moshi with the mouse to grab ass much apples as possible", width / 2, height / 2 + 100);
     text("Make some noice to shoot the tongue for grabbing the apple", width / 2, height / 2 + 120);
-    text("Miss 10 apples, you'll get a visite from Browser and a Game Over", width / 2, height / 2 + 140);
+    text("Miss 10 apples, you'll get a visit from Browser and a Game Over", width / 2, height / 2 + 140);
 
     pop();
 
@@ -403,6 +420,9 @@ function gameover() {
 
 
     background("#FF0000");
+    
+    imgBrowser.resize(100, 100); 
+    image(imgBrowser, width / 2 - 50, height / 2 - 200);
 
     push();
     fill("ffff");
@@ -411,15 +431,12 @@ function gameover() {
     textSize(32);
     fill(255);
     text("GAME OVER", width / 2, height / 2);
+    text("Continue?", width / 2, height / 2 + 120);
     pop();
 
-    imgBrowser.resize(100, 100); 
-    image(imgBrowser, width / 2 - 100 + 200, height / 2 - 100);
 
 
-    imgBrowser.resize(100, 100); 
-    image(imgBrowser, width / 2 - 100 - 200, height / 2 - 100);
- 
+
 
     
     // Show the random message set once during game over
@@ -434,6 +451,11 @@ function gameover() {
     if (mouseIsPressed) {
         state = "title";
     }
+ if (key === 'x' || key === 'X') { // Check if 'x' or 'X' is pressed
+    window.open("https://en.wikipedia.org/wiki/HTTP_cookie", "_blank"); // Opens link in a new tab
+  }
+
+    
 }
 
 function drawPixelatedVideo() {
