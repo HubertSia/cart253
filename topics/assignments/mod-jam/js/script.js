@@ -182,7 +182,7 @@ function title(){
     textAlign(CENTER);
     textSize(18);
     fill(255);
-    text("Move Moshi with the mouse to grab ass much apples as possible", width / 2, height / 2 + 100);
+    text("Move Moshi with the mouse to grab as much apples as possible", width / 2, height / 2 + 100);
     text("Make some noice to shoot the tongue for grabbing the apple", width / 2, height / 2 + 120);
     text("Miss 10 apples, you'll get a visit from Browser and a Game Over", width / 2, height / 2 + 140);
 
@@ -431,7 +431,7 @@ function gameover() {
     textSize(32);
     fill(255);
     text("GAME OVER", width / 2, height / 2);
-    text("Continue?", width / 2, height / 2 + 120);
+    text("Continue?", width / 2, height / 2 + 150);
     pop();
 
 
