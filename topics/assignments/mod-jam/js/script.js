@@ -96,7 +96,10 @@ let mic;
 const shoutThreshold = 0.04;
 
 // Our custom fonts
-let font
+let font;
+
+// Our background music
+let music;
 
 
 /** 
@@ -112,6 +115,7 @@ let pixelSize = 10;
 function preload() {
     imgBrowser = loadImage('assets/images/clown.png');
     font = loadFont('assets/fonts/minecraft.ttf');
+    music = loadSound('assets/sounds/drunk_mario_theme.mp3');
 }
 
 
@@ -155,10 +159,18 @@ function draw() {
     // Draw our gameplay
     else if( state === "game" ){
         game();
+        
+
+    if (!music.isPlaying()) { // Play the music only once at the start of the game
+        music.loop = true;
+        music.play();
+    }
     }
     // Draw our game over screen
     else if( state === "gameover" ){
     gameover();
+    music.stop();
+
     }
 }
 
