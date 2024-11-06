@@ -152,11 +152,11 @@ function setup() {
  */
 function draw() {
 
-    // Draw our start screen
+    // Display our start screen
     if( state === "title" ){
         title();
     }
-    // Draw our gameplay
+    // Display our gameplay
     else if( state === "game" ){
         game();
         
@@ -166,7 +166,7 @@ function draw() {
         music.play();
     }
     }
-    // Draw our game over screen
+    // Display our game over screen
     else if( state === "gameover" ){
     gameover();
     music.stop();
@@ -175,12 +175,17 @@ function draw() {
 }
 
 
+/**
+ * Draw our title screen
+ */
+function title() {
 
-function title(){
+    //Set the pixelated camera-video background 
     background(127);
     image(video, 0,0);
     drawPixelatedVideo(); 
 
+    //Draw the title of the game
     push();
     textAlign(CENTER);
     fill("ffff");
@@ -189,6 +194,7 @@ function title(){
     text("Don't wake up Browser", width / 2, height / 2);
     pop();
 
+    // Draw the instruction of the game
     push();
     textFont(font);
     textAlign(CENTER);
@@ -197,34 +203,54 @@ function title(){
     text("Move Moshi with the mouse to grab as much apples as possible", width / 2, height / 2 + 100);
     text("Make some noice to shoot the tongue for grabbing the apple", width / 2, height / 2 + 120);
     text("Miss 10 apples, you'll get a visit from Browser and a Game Over", width / 2, height / 2 + 140);
-
     pop();
 
+    // Set the score and the miss to 0
     miss = 0;
     score = 0;
 
+    //Transition to the gameplay
     if(mouseIsPressed){
         state = "game";
     }
 }
 
-
-
-function game(){
+/**
+ * Draw the gameplay
+ */
+function game() {
     
+    //Set the pixelated camera-video background 
     background("#87ceeb");
     background(127);
     image(video, 0,0);
     drawPixelatedVideo(); 
 
-    moveApple();    
+    //Able to move the apples
+    moveApple(); 
+    
+    //Tongue movement
     moveTongue();
+
+    //Detect the tongue overlapp the apple
     checkTongueAppleOverlap();
+    
+    //Spawn Apples
     drawApple();
+    
+    //Display Score
     drawScore();  
-    drawMiss();  
+    
+    //Display Miss
+    drawMiss(); 
+    
+    //Move Moshi
     moveMoshi();
+    
+    // Display Moshi
     drawMoshi();
+    
+    // Detect volume of the mic
     checkVolume();
 
 }
@@ -245,7 +271,8 @@ function moveApple() {
             miss = miss + 1;
             console.log(miss);
 
-
+            // If the user miss 10
+            // Change state to game-over
             if(miss === 10){
                 state = "gameover";
                 gameoverMessage = messages[floor(random(messages.length))];
@@ -255,9 +282,11 @@ function moveApple() {
 }
 
 /**
- * Draws the fly as a black circle
+ * Draws the apple as a red circle
  */
 function drawApple() {
+    
+    // Draw a red ellipse
     push();
     noStroke();
     fill("#FF0000");
@@ -272,6 +301,9 @@ function drawApple() {
  * Resets the fly to the left with a random y
  */
 function resetApple() {
+    
+    // Starts at 0
+    // Spawns at a random X position
     apple.y = 0;
     apple.x = random(0, 640);
 
@@ -282,6 +314,9 @@ function resetApple() {
  * Moves the frog to the mouse position on x
  */
 function moveMoshi() {
+    
+    // Our Moshi is move by the horizontal  position of the mouse
+    // Moshi's eyes also follows the mouse position
     moshi.body.x = mouseX;
     moshi.righEye.x = mouseX - 80;
     moshi.leftEye.x = mouseX + 80;
@@ -291,7 +326,7 @@ function moveMoshi() {
  * Handles moving the tongue based on its state
  */
 function moveTongue() {
-    // Tongue matches the frog's x
+    // Tongue matches the Moshi's x
     moshi.tongue.x = moshi.body.x;
     // If the tongue is idle, it doesn't do anything
     if (moshi.tongue.state === "idle") {
@@ -316,7 +351,7 @@ function moveTongue() {
 }
 
 /**
- * Displays the tongue (tip and line connection) and the frog (body)
+ * Displays the tongue (tip and line connection) and Moshi (body)
  */
 function drawMoshi() {
     // Draw the tongue tip
@@ -334,17 +369,22 @@ function drawMoshi() {
     pop();
 
 
-    // Draw the frog's body
+    // Draw Moshi's body
     push();
     fill("#D21404");
     noStroke();
     ellipse(moshi.body.x, moshi.body.y, moshi.body.size);
     pop();
 
+    // Display the eyes
     drawEyes();
 
 }
 
+
+/**
+ * Draw the eyes of Moshi
+ */
 function drawEyes() {
     // Draw the left eye
     push();
@@ -384,7 +424,6 @@ function checkTongueAppleOverlap() {
 
         // Increase score
         score = score + 1;
-        ///console.log(score);
 
         // Reset the fly
         resetApple();
@@ -403,7 +442,7 @@ function checkVolume(){
 }
 }
 
-// the score 
+// Draw the score 
 function drawScore(){
     push();
     textFont(font);
@@ -415,7 +454,7 @@ function drawScore(){
 }
 
 
-// the miss score 
+//Draw the miss score 
 function drawMiss(){
     push();
     textFont(font);
@@ -427,15 +466,19 @@ function drawMiss(){
 }
 
 
-
+/**
+ * Draw the game over screen
+ */
 function gameover() {
 
-
+    // Red background
     background("#FF0000");
     
+    // Draw Browser
     imgBrowser.resize(100, 100); 
     image(imgBrowser, width / 2 - 50, height / 2 - 200);
 
+    // Display game over text
     push();
     fill("ffff");
     textFont(font);
@@ -445,9 +488,6 @@ function gameover() {
     text("GAME OVER", width / 2, height / 2);
     text("Continue?", width / 2, height / 2 + 150);
     pop();
-
-
-
 
 
     
@@ -460,21 +500,34 @@ function gameover() {
     text(gameoverMessage, width / 2, height / 2 + 100);
     pop();
 
+    // Go back to game
     if (mouseIsPressed) {
-        state = "title";
+        state = "game";
     }
- if (key === 'x' || key === 'X') { // Check if 'x' or 'X' is pressed
-    window.open("https://en.wikipedia.org/wiki/HTTP_cookie", "_blank"); // Opens link in a new tab
+    
+    // Check if 'x' or 'X' is pressed
+    // Opens link in a new tab
+    if (key === 'x' || key === 'X') { 
+     
+    window.open("https://en.wikipedia.org/wiki/HTTP_cookie", "_blank"); 
   }
 
     
 }
 
+
+
+/**
+ * Display up our pixelated video camera
+ */
 function drawPixelatedVideo() {
 
+    // Set up the video size
+    // Call upon the pixels
     image(video, 0, 0, width, height);
     video.loadPixels();
-
+    
+    // Loop set up of generating pixel
     for (let y = 0; y < video.height; y += pixelSize) {
         for (let x = 0; x < video.width; x += pixelSize) {
             let index = (x + y * video.width) * 10;
