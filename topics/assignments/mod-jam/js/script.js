@@ -502,7 +502,7 @@ function gameover() {
 
     // Go back to game
     if (mouseIsPressed) {
-        state = "game";
+        state = "title";
     }
     
     // Check if 'x' or 'X' is pressed
