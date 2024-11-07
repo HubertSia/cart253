@@ -3,6 +3,16 @@
  * Hubert Sia
  *  
  * 
+ * The players are playing as Moshi, the friendly dinosaur, he is very hungry. So he is going to eat some apples the drops from the sky in a weird pixelated world.
+ *  Moshi must eat as much apples as possible, If he misses 10, Browser will wake up from his slumber and will do unspeakable things to Moshi.
+ * 
+ * 
+ * Controls:
+ * 
+ * - Click to start the game
+ * - Use the mouse to move Moshi
+ * - Make noise to shoot the tongue
+ * 
  * Made with p5
  * https://p5js.org/
  */
@@ -113,7 +123,7 @@ let pixelSize = 10;
 
 
 /** 
- * Preload our fonts and images
+ * Preload our fonts, images and sounds
  */
 function preload() {
     imgBrowser = loadImage('assets/images/clown.png');
