@@ -406,13 +406,14 @@ function drawEyes() {
     ellipse(moshi.righEye.x, moshi.righEye.y, moshi.righEye.size);
     pop();
 
-    // Draw the retinas in the left and right eyes
+    // Draw the retinas in the left 
     push();
     fill("#000000");
     noStroke();
     ellipse(moshi.leftEye.x, moshi.leftEye.y, 25); 
     pop();
 
+    // Draw the retina of the right
     push();
     fill("#000000");
     noStroke();
@@ -532,7 +533,7 @@ function secretButton(){
     window.open("https://en.wikipedia.org/wiki/HTTP_cookie", "_blank"); 
   }
 
-      // Check if 'f' or 'F' is pressed
+    // Check if 'f' or 'F' is pressed
     // Opens link in a new tab (Leads to Crab Rave)
     if (key === 'f' || key === 'F') { 
      
@@ -540,7 +541,7 @@ function secretButton(){
       }
 
 
-        // Check if 'f' or 'F' is pressed
+    // Check if 'f' or 'F' is pressed
     // Opens link in a new tab (Leads to Crab Rave)
     if (key === 'b' || key === 'B') { 
      
@@ -568,16 +569,16 @@ function drawPixelatedVideo() {
   //load the pixel data from the capture
   //into pixel array
   capture.loadPixels();
-  
+    
+  // Our background for the pixels
   background(0, 150, 255);
 
     //Looping the pixels in our webcam
     for (let y = 0; y < capture.height; y += gridSize) {
     for (let x = 0; x < capture.width; x += gridSize) {
       
-      // at the current position, get the red
-      // value (an approximation for brightness)
-      // and use it to create the diameter
+      // At the current position, get the red
+      // Value (an approximation for brightness)
       let index = (y * capture.width + x) * 4;
       
       // Brightness value of each pixel
