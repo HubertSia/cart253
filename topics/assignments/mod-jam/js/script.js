@@ -19,7 +19,9 @@ const messages  = [
     "Am I getting sue by Nintendo© for this?",
     "When life gives you apples, do not wake up the turtle -Sun Tzu",
     "Moshi are you there! Moshi.... MOOOOOOSHHIIII!",
-    "The clown is Browser by the way"
+    "The clown is Browser by the way",
+    "Pess 'F' to pay respect"
+
 
 ];
 
@@ -105,7 +107,7 @@ let music;
 /** 
  * Our webcamera and pixel size 
  */
-let video;
+let capture;
 let pixelSize = 10; 
 
 
@@ -128,10 +130,8 @@ function setup() {
     createCanvas(640, 480);
 
     // Setting up the webcam video. Hides the secondary camera
-    video = createCapture(VIDEO);
-    video.size(640, 480);
-    video.size(640 / pixelSize, 480 / pixelSize); 
-    video.hide();
+    capture = createCapture(VIDEO);
+    capture.hide();
 
     // Set up for our microphone
     mic = new p5.AudioIn();
@@ -181,8 +181,6 @@ function draw() {
 function title() {
 
     //Set the pixelated camera-video background 
-    background(127);
-    image(video, 0,0);
     drawPixelatedVideo(); 
 
     //Draw the title of the game
@@ -198,11 +196,10 @@ function title() {
     push();
     textFont(font);
     textAlign(CENTER);
-    stroke(10);
     textSize(19);
     fill(255);
     text("Move Moshi with the mouse to grab as much apples as possible", width / 2, height / 2 + 100);
-    text("Make some noice to shoot the tongue for grabbing the apple", width / 2, height / 2 + 125);
+    text("Make some noise to shoot the tongue for grabbing the apple", width / 2, height / 2 + 125);
     text("Miss 10 apples, you'll get a visit from Browser and a Game Over", width / 2, height / 2 + 150);
     pop();
 
@@ -222,9 +219,8 @@ function title() {
 function game() {
     
     //Set the pixelated camera-video background 
-    background("#87ceeb");
+    background("white");
     background(127);
-    image(video, 0,0);
     drawPixelatedVideo(); 
 
     //Able to move the apples
@@ -357,14 +353,14 @@ function moveTongue() {
 function drawMoshi() {
     // Draw the tongue tip
     push();
-    fill("#046200");
+    fill("#00ff00");
     noStroke();
     ellipse(moshi.tongue.x, moshi.tongue.y, moshi.tongue.size);
     pop();
 
     // Draw the rest of the tongue
     push();
-    stroke("#046200");
+    stroke("#00ff00");
     strokeWeight(moshi.tongue.size);
     line(moshi.tongue.x, moshi.tongue.y, moshi.body.x, moshi.body.y);
     pop();
@@ -525,30 +521,56 @@ function secretButton(){
     window.open("https://en.wikipedia.org/wiki/HTTP_cookie", "_blank"); 
   }
 
+      // Check if 'f' or 'F' is pressed
+    // Opens link in a new tab (Leads to Crab Rave)
+    if (key === 'f' || key === 'F') { 
+     
+        window.open("https://youtu.be/LDU_Txk06tM?si=GMZtFGGcxx87uikD&t=73", "_blank"); 
+      }
+    
 
 }
 
 /**
  * Display up our pixelated video camera
+ * 
+ * Source: https://editor.p5js.org/zoewujw/sketches/ShlQBGNPg
+ * 
  */
 function drawPixelatedVideo() {
 
-    // Set up the video size
-    // Call upon the pixels
-    image(video, 0, 0, width, height);
-    video.loadPixels();
-    
-    // Loop set up of generating pixel
-    for (let y = 0; y < video.height; y += pixelSize) {
-        for (let x = 0; x < video.width; x += pixelSize) {
-            let index = (x + y * video.width) * 10;
-            let r = video.pixels[index + 0];
-            let g = video.pixels[index + 1];
-            let b = video.pixels[index + 2];
 
-            fill(r, g, b);
-            noStroke();
-            rect(x * pixelSize, y * pixelSize, pixelSize, pixelSize);
-        }
+  //Mapping the pixel to the size of the Pixel Grid
+  let gridSize = int(map(100, 0, 640, 5, 50));
+  
+  
+  //load the pixel data from the capture
+  //into pixel array
+  capture.loadPixels();
+  
+  background(0, 150, 255);
+
+    //Looping the pixels in our webcam
+    for (let y = 0; y < capture.height; y += gridSize) {
+    for (let x = 0; x < capture.width; x += gridSize) {
+      
+      // at the current position, get the red
+      // value (an approximation for brightness)
+      // and use it to create the diameter
+      let index = (y * capture.width + x) * 4;
+      
+      // Brightness value of each pixel
+      let r = capture.pixels[index];
+      
+      //Our diameter for our grid
+      let dia = map(r, 0,255, gridSize,2);
+
+      
+      // Draw our rectangle/pixel
+      // Using the diameter to caculate the grid
+      fill('green');
+      noStroke();
+      rect(x + gridSize/20,y + gridSize/20, dia, dia);
     }
+  }
 }
