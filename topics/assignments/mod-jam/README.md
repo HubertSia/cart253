@@ -11,6 +11,16 @@ Moshi must eat as much apples as possible, If he misses 10, Browser will wake up
 
 Make sure webcam and mic are functional for this game.
 
+Stuff added:
+
+- Change the visual of the Frog to Moshi like
+- Added music on the background
+- Shout or make noise to shoot the tongue
+- Background is the pixelated webcam
+- Added title, instruction and game over screen
+- Added secret buttons (works at game over screen)
+- Added a score and miss counter
+
 ## Credits
 
 This project uses [p5.js](https://p5js.org).
