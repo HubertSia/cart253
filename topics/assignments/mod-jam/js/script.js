@@ -198,11 +198,12 @@ function title() {
     push();
     textFont(font);
     textAlign(CENTER);
-    textSize(18);
+    stroke(10);
+    textSize(19);
     fill(255);
     text("Move Moshi with the mouse to grab as much apples as possible", width / 2, height / 2 + 100);
-    text("Make some noice to shoot the tongue for grabbing the apple", width / 2, height / 2 + 120);
-    text("Miss 10 apples, you'll get a visit from Browser and a Game Over", width / 2, height / 2 + 140);
+    text("Make some noice to shoot the tongue for grabbing the apple", width / 2, height / 2 + 125);
+    text("Miss 10 apples, you'll get a visit from Browser and a Game Over", width / 2, height / 2 + 150);
     pop();
 
     // Set the score and the miss to 0
@@ -505,17 +506,27 @@ function gameover() {
         state = "title";
     }
     
+    //Calls in the secret button
+    secretButton();
+    
+}
+
+
+/**
+ * Activate secret button
+ */
+function secretButton(){
+
+    
     // Check if 'x' or 'X' is pressed
-    // Opens link in a new tab
+    // Opens link in a new tab (wich is the free "cookies")
     if (key === 'x' || key === 'X') { 
      
     window.open("https://en.wikipedia.org/wiki/HTTP_cookie", "_blank"); 
   }
 
-    
+
 }
-
-
 
 /**
  * Display up our pixelated video camera
