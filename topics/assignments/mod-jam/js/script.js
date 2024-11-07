@@ -20,7 +20,8 @@ const messages  = [
     "When life gives you apples, do not wake up the turtle -Sun Tzu",
     "Moshi are you there! Moshi.... MOOOOOOSHHIIII!",
     "The clown is Browser by the way",
-    "Pess 'F' to pay respect"
+    "Pess 'F' to pay respect",
+    "Pess 'B' for being a bro!"
 
 
 ];
@@ -525,11 +526,21 @@ function secretButton(){
     // Opens link in a new tab (Leads to Crab Rave)
     if (key === 'f' || key === 'F') { 
      
-        window.open("https://youtu.be/LDU_Txk06tM?si=GMZtFGGcxx87uikD&t=73", "_blank"); 
+        window.open("https://youtu.be/LDU_Txk06tM?si=IbSDsGXy70peU5pG&t=74", "_blank"); 
+      }
+
+
+        // Check if 'f' or 'F' is pressed
+    // Opens link in a new tab (Leads to Crab Rave)
+    if (key === 'b' || key === 'B') { 
+     
+        window.open("https://youtu.be/ncQJRJoHwL0?si=fAQaa_JgR4IphecL&t=4","_blank"); 
       }
     
 
 }
+
+
 
 /**
  * Display up our pixelated video camera
