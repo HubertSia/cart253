@@ -21,6 +21,7 @@ The project used the template of Frofrogfrog project (https://pippinbarr.github.
 
 The pixelated camera: https://editor.p5js.org/cacheflowe/sketches/aLybN_TdB
 The amazing music perform by The Drunk Men's Choir: https://www.youtube.com/watch?v=mDTzB0mgBHw
+Microphone functions:https://editor.p5js.org/p5/sketches/Sound:_Mic_Threshold
 Clown Image was already in the base project
 Borrow some code from the Arrays and Functions modules
  
