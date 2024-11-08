@@ -111,9 +111,10 @@ const shoutThreshold = 0.04;
 // Our custom fonts
 let font;
 
-// Our background music
+// Our sounds
 let music;
-
+let pain;
+let crunch;
 
 /** 
  * Our webcamera and pixel size 
@@ -129,6 +130,9 @@ function preload() {
     imgBrowser = loadImage('assets/images/clown.png');
     font = loadFont('assets/fonts/minecraft.ttf');
     music = loadSound('assets/sounds/drunk_mario_theme.mp3');
+    crunch = loadSound('assets/sounds/crunch.mp3');
+    pain = loadSound('assets/sounds/pain.mp3');
+
 }
 
 
@@ -276,8 +280,10 @@ function moveApple() {
         resetApple();
 
             // Increase miss
+            // Play the pain SFX (Poor Browser)
             miss = miss + 1;
             console.log(miss);
+            pain.play();
 
             // If the user miss 10
             // Change state to game-over
@@ -432,7 +438,9 @@ function checkTongueAppleOverlap() {
     if (eaten) {
 
         // Increase score
+        // Play the crunch SFX
         score = score + 1;
+        crunch.play();
 
         // Reset the fly
         resetApple();

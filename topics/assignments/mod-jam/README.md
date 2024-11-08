@@ -20,6 +20,7 @@ Stuff added:
 - Added title, instruction and game over screen
 - Added secret buttons (works at game over screen)
 - Added a score and miss counter
+- Added sound effects
 
 ## Credits
 
@@ -34,5 +35,7 @@ The amazing music perform by The Drunk Men's Choir: https://www.youtube.com/watc
 Microphone functions:https://editor.p5js.org/p5/sketches/Sound:_Mic_Threshold
 Clown Image was already in the base project
 Borrow some code from the Arrays and Functions modules
+Added "crunch" SFX: https://www.youtube.com/watch?v=B8gXV0JKx6U
+Added "pain" SFX
  
 
