@@ -36,6 +36,7 @@ Microphone functions:https://editor.p5js.org/p5/sketches/Sound:_Mic_Threshold
 Clown Image was already in the base project
 Borrow some code from the Arrays and Functions modules
 Added "crunch" SFX: https://www.youtube.com/watch?v=B8gXV0JKx6U
-Added "pain" SFX
+Added "pain" SFX: https://www.youtube.com/watch?v=PP7WJL2JtLs
+
  
 
