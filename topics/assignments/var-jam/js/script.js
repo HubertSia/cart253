@@ -1,69 +1,45 @@
 /**
- * Welcome to the piano
+ * The piano
  * Hubert Sia
-
- * 
- * 
- * 
  */
 
 "use strict";
 
-// The variable state mode
+// Array to store sound files
+let pianoNotes = [];
 
+// Key mappings to notes
+let keyMap = {
+  'a': 0, // C
+  's': 1, // D
+  'd': 2, // E
+  'f': 3, // F
+  'g': 4, // G
+  'h': 5, // A
+  'j': 6, // B
+};
 
+// Piano dimensions
+let whiteKeyWidth = 90;
+let whiteKeyHeight = 400;
+let blackKeyWidth = 60;
+let blackKeyHeight = 200;
+let pianoX; 
+let pianoY = 50; 
 
-// Preload the image and the music
+// Preload the piano keys sounds
 function preload() {
-
-
+ // for (let i = 0; i < 7; i++) {
+    //pianoNotes[i] = loadSound("assets/sounds/bark${i}.wav"); // Replace with actual file paths
+ // }
 }
 
-
-
-
-
-
-// Once at the beginning of the program
+// At the start
 function setup() {
-        //Create the canvas
-        createCanvas(900, 500);
-        background("red")
+  createCanvas(900, 500);
+  background("green");
 
-
-}
-
-// Every frame of the program
-function draw() {
-        push();
-        rect(0 , 50 , 90, 400);
-        rect(100 , 50 , 90, 400);
-        rect(200 , 50 , 90, 400);
-        rect(300 , 50 , 90, 400);
-        rect(400 , 50 , 90, 400);
-        rect(500 , 50 , 90, 400);
-        rect(600 , 50 , 90, 400);
-        pop();
-
-
-
-        push();
-        fill('black')
-        rect(65 , 50 , 60, 200);
-        rect(165, 50 , 60, 200);
-        rect(365, 50 , 60, 200);
-        rect(465, 50 , 60, 200);
-        rect(565, 50 , 60, 200);
-        pop();
-
-
-    
-}
-
-
-
-
-
+ }
 
 
 
