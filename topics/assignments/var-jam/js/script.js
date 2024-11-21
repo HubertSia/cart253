@@ -20,12 +20,29 @@ let keyMap = {
 };
 
 // Piano dimensions
-let whiteKeyWidth = 90;
-let whiteKeyHeight = 400;
-let blackKeyWidth = 60;
-let blackKeyHeight = 200;
-let pianoX; 
-let pianoY = 50; 
+const pianoKeys = {
+
+
+   position: {
+       
+           x: undefined,
+           y: 50
+    },
+
+    // White keys
+    white: {
+       
+        w: 90,
+        h: 400
+    },
+
+    // Black keys
+    black:{
+        w: 60,
+        h: 200
+    }
+     
+}
 
 // Preload the piano keys sounds
 function preload() {
@@ -42,10 +59,12 @@ function setup() {
   background("green");
   
   // Caculate the starting X to center the piano
-  let pianoWidth =  7 * whiteKeyWidth;
-  pianoX = (width - pianoWidth) / 2;
+  let pianoWidth =  7 * pianoKeys.white.w;
+  pianoKeys.position.x = (width - pianoWidth) / 2;
 
  }
+
+
 
 
 
@@ -64,14 +83,14 @@ function drawPiano() {
   for (let i = 0; i < 7; i++) {
     fill("white");
     stroke("black");
-    rect(pianoX + i * whiteKeyWidth, pianoY, whiteKeyWidth, whiteKeyHeight);
+    rect(pianoKeys.position.x + i * pianoKeys.white.w, pianoKeys.position.y, pianoKeys.white.w, pianoKeys.white.h);
   }
 
   //Set up our loop for black keys
   for (let i = 0; i < 6; i++) {
     if (i !== 2) { 
       fill("black");
-      rect(pianoX + i * whiteKeyWidth + whiteKeyWidth * 0.72, pianoY, blackKeyWidth, blackKeyHeight);
+      rect(pianoKeys.position.x + i * pianoKeys.white.w + pianoKeys.white.w * 0.72, pianoKeys.position.y, pianoKeys.black.w, pianoKeys.black.h);
     }
    }
 }
