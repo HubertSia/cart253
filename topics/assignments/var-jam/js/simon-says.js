@@ -35,7 +35,7 @@ const pianoKeys = {
 let activeKey = null;
 
 
-let state = 'piano';// State are title, game, game over
+let state = "piano";// State are title, game, game over
 
 
 
@@ -49,11 +49,31 @@ function setup() {
   createCanvas(900, 500);
   background("blue");
   pianoKeys.position.x = (width - 7 * pianoKeys.white.w) / 2;
+
 }
 
 function draw() {
-  drawPiano();
+  
+      // Display our piano screen
+    if( state === "piano" ){
+        piano();
+    }
+ 
+    // Display our game over screen
+    else if( state === "gameover" ){
+    gameover();
+    }
+  
+  
 }
+
+
+function piano() {
+  
+  drawPiano();
+
+}
+
 
 function drawPiano() {
   for (let i = 0; i < 7; i++) {
@@ -78,3 +98,5 @@ function keyPressed() {
 function keyReleased() {
   activeKey = null;
 }
+
+
