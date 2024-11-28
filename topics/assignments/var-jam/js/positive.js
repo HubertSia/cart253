@@ -42,9 +42,10 @@ const messages = [
   "Press 'E' ",
 ];
 
-// Variable to track the active key
+// Tracking the active key
 let activeKey = null;
 let displayedMessage = "";
+//Timer of our message start at zero
 let messageTime = 0;
 
 // Function to preload sounds
@@ -68,7 +69,9 @@ function draw() {
   secretButton();
 }
 
-// Draw the piano keys
+/**
+ * Draw the piano keys 
+ */
 function drawPiano() {
   for (let i = 0; i < 7; i++) {
     fill(activeKey === i ? "blue" : "white");
@@ -82,7 +85,9 @@ function drawPiano() {
   }
 }
 
-// Display the random message while playing
+/**
+ *  Display the random message while playing
+ */
 function displayMessage() {
   if (messageTime > 0) {
     fill("black");
@@ -101,7 +106,8 @@ function keyPressed() {
     
     // Pick a random message and show it immediately, reset messageTime
     displayedMessage = random(messages);
-    messageTime = 60; // The message will display for ~1 second
+    // The message will display for 1 second (60 millasecond)
+    messageTime = 60; 
   }
 }
 

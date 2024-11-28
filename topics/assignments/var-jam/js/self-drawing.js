@@ -171,5 +171,3 @@ function keyReleased() {
   // Return to null
   activeKey = null;
 }
-
-
