@@ -40,12 +40,13 @@ let activeKey = null;
 let shapes = [];
 
 
-
+// Load the key sounds
 function preload() {
   for (let i = 0; i < 7; i++) {
     pianoNotes[i] = loadSound(`assets/sounds/pain/pain${i}.wav`);
   }
 }
+
 
 function setup() {
   createCanvas(1000, 600);
