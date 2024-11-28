@@ -36,6 +36,20 @@ let activeKey = null;
 
 let webcam; // Webcam feed
 
+
+// Colors for each key
+let colors = [
+  [255, 0, 0],    
+  [0, 255, 0],    
+  [0, 0, 255],    
+  [255, 255, 0],  
+  [255, 0, 255],  
+  [0, 255, 255], 
+  [255, 255, 255]
+];
+
+
+
 function preload() {
   for (let i = 0; i < 7; i++) {
     pianoNotes[i] = loadSound(`assets/sounds/white-keys/white-keynote${i}.wav`);
@@ -54,11 +68,18 @@ function setup() {
 }
 
 function draw() {
-  background("green");
 
   image(webcam, 0, 0, width, height);
 
+    // Overlay color if a key is active
+  if (activeKey !== null) {
+    let c = colors[activeKey];
+    fill(c[0], c[1], c[2], 100); 
+    rect(0, 0, width, height);
+  }
+  
   drawPiano();
+    
 }
 
 function drawPiano() {
