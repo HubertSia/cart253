@@ -34,6 +34,8 @@ const pianoKeys = {
 // Variable to track the active key
 let activeKey = null;
 
+let webcam; // Webcam feed
+
 function preload() {
   for (let i = 0; i < 7; i++) {
     pianoNotes[i] = loadSound(`assets/sounds/white-keys/white-keynote${i}.wav`);
@@ -44,15 +46,30 @@ function setup() {
   createCanvas(900, 500);
   background("green");
   pianoKeys.position.x = (width - 7 * pianoKeys.white.w) / 2;
+
+  // Initialize webcam 
+  webcam = createCapture(VIDEO);
+  webcam.size(width, height); 
+  webcam.hide(); 
 }
 
 function draw() {
+  background("green");
+
+  image(webcam, 0, 0, width, height);
+
   drawPiano();
 }
 
 function drawPiano() {
   for (let i = 0; i < 7; i++) {
-    fill(activeKey === i ? "yellow" : "white");
+    // Add transparency 
+    if (activeKey === i) {
+      fill(255, 255, 0, 200);
+    } else {
+      fill(255, 255, 255, 150);
+    }
+
     stroke("black");
     rect(
       pianoKeys.position.x + i * pianoKeys.white.w,
