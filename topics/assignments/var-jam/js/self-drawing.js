@@ -48,7 +48,7 @@ function preload() {
 }
 
 function setup() {
-  createCanvas(1800, 1000);
+  createCanvas(1000, 600);
   background("#ADD8E6");
   pianoKeys.position.x = (width - 7 * pianoKeys.white.w) / 2;
 
