@@ -35,7 +35,6 @@ const pianoKeys = {
 let activeKey = null;
 
 
-let state = "piano";// State are title, game, game over
 
 
 
@@ -46,7 +45,7 @@ function preload() {
 }
 
 function setup() {
-  createCanvas(900, 500);
+  createCanvas(1800, 1000);
   background("blue");
   pianoKeys.position.x = (width - 7 * pianoKeys.white.w) / 2;
 
@@ -54,25 +53,13 @@ function setup() {
 
 function draw() {
   
-      // Display our piano screen
-    if( state === "piano" ){
-        piano();
-    }
- 
-    // Display our game over screen
-    else if( state === "gameover" ){
-    gameover();
-    }
-  
-  
-}
-
-
-function piano() {
-  
   drawPiano();
 
+  
+  
 }
+
+
 
 
 function drawPiano() {
