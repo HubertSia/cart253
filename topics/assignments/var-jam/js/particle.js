@@ -1,4 +1,4 @@
- /**
+/**
  * The piano
  * Hubert Sia
  */
@@ -42,9 +42,13 @@ let backgroundParticles = [];
 let backgroundReaction = false;
 let reactionTimer = 0;
 
+// Amplitude analysis object
+let amplitude;
+let fft;
+
 function preload() {
   for (let i = 0; i < 7; i++) {
-    pianoNotes[i] = loadSound(`assets/sounds/white-keys/white-keynote${i}.wav`);  // Added backticks around the string
+    pianoNotes[i] = loadSound(`assets/sounds/x-mas/christmas${i}.mp3`);
   }
 }
 
@@ -52,6 +56,10 @@ function setup() {
   createCanvas(900, 500);
   background("green");
   pianoKeys.position.x = (width - 7 * pianoKeys.white.w) / 2;
+
+  // Initialize amplitude and FFT objects
+  amplitude = new p5.Amplitude();
+  fft = new p5.FFT();
 
   // Generate initial background particles
   for (let i = 0; i < 100; i++) {
@@ -70,6 +78,9 @@ function draw() {
 
   // Update and draw piano particles
   updatePianoParticles();
+
+  // Visualizer (FFT)
+  drawVisualizer();
 
   // Handle reaction timer
   if (backgroundReaction) {
@@ -166,7 +177,7 @@ class BackgroundParticle {
     this.vx = random(-1, 1);
     this.vy = random(0.5, 2);
     this.size = random(2, 5);
-    this.color = color(255, random(100, 200), random(100, 255), 150); // Light blue shades
+    this.color = color(255, random(100, 200), random(100, 255), 150);
   }
 
   update() {
@@ -179,12 +190,15 @@ class BackgroundParticle {
       this.x = random(width);
     }
 
-    // React to piano key presses
+    // React to piano key presses (with sound amplitude influence)
     if (backgroundReaction) {
-      this.size = random(5, 10);
+      // Get current sound amplitude
+      let level = amplitude.getLevel(); 
+      // Increase size based on sound amplitude
+      this.size = random(10 + level * 50, 20 + level * 100); 
       this.color = color(random(200, 255), random(100, 255), random(100, 255), 200);
     } else {
-      this.size = max(this.size - 0.1, 2); // Gradually return to normal size
+      this.size = max(this.size - 0.1, 2);
     }
   }
 
@@ -206,3 +220,27 @@ function triggerBackgroundReaction() {
   backgroundReaction = true;
   reactionTimer = 30; // Reaction lasts for 30 frames
 }
+
+// Draws the audio visualizer based on FFT data
+function drawVisualizer() {
+  
+   // Get the frequency spectrum
+  let spectrum = fft.analyze(); 
+  noFill();
+  
+  // Set stroke color to light blue (RGB: 173, 216, 230)
+  stroke(173, 216, 230);
+  strokeWeight(2);
+
+  // Draw the spectrum as bars
+  for (let i = 0; i < spectrum.length; i++) {
+    let x = map(i, 0, spectrum.length, 0, width);
+    
+    // Map the spectrum value to height
+    let h = -height + map(spectrum[i], 0, 255, height, 0); 
+    
+    // Draw bars
+    rect(x, height, width  / spectrum.length, h);
+  }
+}
+
