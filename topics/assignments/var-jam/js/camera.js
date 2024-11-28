@@ -39,13 +39,13 @@ let webcam; // Webcam feed
 
 // Colors for each key
 let colors = [
-  [255, 0, 0],    
-  [0, 255, 0],    
-  [0, 0, 255],    
-  [255, 255, 0],  
-  [255, 0, 255],  
-  [0, 255, 255], 
-  [255, 255, 255]
+  [255, 0, 0],    // Red for 'C'
+  [0, 255, 0],    // Green for 'D'
+  [0, 0, 255],    // Blue for 'E'
+  [255, 255, 0],  // Yellow for 'F'
+  [255, 0, 255],  // Magenta for 'G'
+  [0, 255, 255],  // Cyan for 'A'
+  [255, 255, 255] // White for 'B'
 ];
 
 
@@ -71,10 +71,19 @@ function draw() {
 
   image(webcam, 0, 0, width, height);
 
+
+    if (activeKey !== null) {
+      drawVisuals(activeKey);
+       let c = colors[activeKey];
+    fill(c[0], c[1], c[2], 100); // Semi-transparent color
+    rect(0, 0, width, height);
+  };
+  
+  
     // Overlay color if a key is active
   if (activeKey !== null) {
     let c = colors[activeKey];
-    fill(c[0], c[1], c[2], 100); 
+    fill(c[0], c[1], c[2], 100); // Semi-transparent color
     rect(0, 0, width, height);
   }
   
@@ -99,6 +108,20 @@ function drawPiano() {
       pianoKeys.white.h
     );
   }
+}
+
+
+
+function drawVisuals(keyIndex) {
+  let color = colors[keyIndex];
+  noStroke();
+  fill(color[0], color[1], color[2], 150);
+
+  // Fill canvas with small ellipses
+  for (let i = 0; i < 100; i++) {
+    ellipse(random(width), random(height), random(5, 20));
+  }
+
 }
 
 function keyPressed() {
