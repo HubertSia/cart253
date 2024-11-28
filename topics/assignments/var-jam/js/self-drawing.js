@@ -48,6 +48,9 @@ function preload() {
 }
 
 
+/***
+ * At the start scene
+ */
 function setup() {
   createCanvas(1000, 600);
   background("#ADD8E6");
@@ -55,8 +58,10 @@ function setup() {
 
 }
 
+/**
+ * At my draw 
+ */
 function draw() {
-  
   drawPiano();
   drawShapes();
   updateShapes();
@@ -65,32 +70,37 @@ function draw() {
 
 
 
-
+/**
+ * Draw piano
+ */
 function drawPiano() {
+  // Loop the shapes of the keys 7 times
   for (let i = 0; i < 7; i++) {
     fill(activeKey === i ? "red" : "white");
     stroke("black");
-    rect(
-      pianoKeys.position.x + i * pianoKeys.white.w,
-      pianoKeys.position.y,
-      pianoKeys.white.w,
-      pianoKeys.white.h
-    );
+    rect(pianoKeys.position.x + i * pianoKeys.white.w, pianoKeys.position.y, pianoKeys.white.w, pianoKeys.white.h);
   }
 }
 
-// Function to generate a random shape and position (the magic)
+
+/**
+ * System of generate random shapes
+ */
 function generateRandomShape() {
+  // Our type of shapes
   let shapeType = random(["circle", "rectangle", "triangle"]);
+  
+  // Value of the shapes
   let shape = {
     type: shapeType,
     x: random(width),
     y: random(height),
-    size: random(50, 100),
+    size: random(10, 100),
     color: color(random(255), random(255), random(255)),
     speedX: random(2, 5),
     speedY: random(2, 5),
   };
+  
   return shape;
 }
 
@@ -101,23 +111,22 @@ function drawShapes() {
     let shape = shapes[i];
     fill(shape.color);
     noStroke();
-
+    // Randomize the position and size of the circle
     if (shape.type === "circle") {
       ellipse(shape.x, shape.y, shape.size);
+    // Randomize the position and size of the rectangle
     } else if (shape.type === "rectangle") {
+    // Randomize the position and size of the triangle
       rect(shape.x, shape.y, shape.size, shape.size);
     } else if (shape.type === "triangle") {
-      triangle(
-        shape.x, shape.y - shape.size / 2,
-        shape.x - shape.size / 2, shape.y + shape.size / 2,
-        shape.x + shape.size / 2, shape.y + shape.size / 2
-      );
+      triangle(shape.x, shape.y - shape.size / 2, shape.x - shape.size / 2, shape.y + shape.size / 2, shape.x + shape.size / 2, shape.y + shape.size / 2);
     }
   }
 }
 
-
-// Allows for the shape to bounce
+/**
+ *  Check the speed and bounce of the shapes
+ */
 function updateShapes() {
   for (let i = 0; i < shapes.length; i++) {
     let shape = shapes[i];
@@ -136,16 +145,30 @@ function updateShapes() {
   }
 }
 
+
+/**
+ * On the key pressed
+ */
 function keyPressed() {
   if (keyMap[key] !== undefined) {
+        // Play the piano sound
     activeKey = keyMap[key];
     pianoNotes[activeKey].play();
-    let newShape = generateRandomShape(); // Create a random shape
-    shapes.push(newShape); // Add it to the shapes array
+    
+    
+     // Create a new random shape
+    let newShape = generateRandomShape();
+    // Add it to the shapes array
+    shapes.push(newShape); 
   }
 }
 
+
+/**
+ * On release of the key
+ */
 function keyReleased() {
+  // Return to null
   activeKey = null;
 }
 
