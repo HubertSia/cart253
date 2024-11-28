@@ -50,14 +50,14 @@ let messageTime = 0;
 // Function to preload sounds
 function preload() {
   for (let i = 0; i < 7; i++) {
-    pianoNotes[i] = loadSound(`assets/sounds/white-keys/white-keynote${i}.wav`);
+    pianoNotes[i] = loadSound(`assets/sounds/cat/meow${i}.mp3`);
   }
 }
 
 // Setup the canvas
 function setup() {
   createCanvas(900, 500);
-  background("green");
+  background("yellow");
   pianoKeys.position.x = (width - 7 * pianoKeys.white.w) / 2;
 }
 
@@ -71,7 +71,7 @@ function draw() {
 // Draw the piano keys
 function drawPiano() {
   for (let i = 0; i < 7; i++) {
-    fill(activeKey === i ? "yellow" : "white");
+    fill(activeKey === i ? "blue" : "white");
     stroke("black");
     rect(
       pianoKeys.position.x + i * pianoKeys.white.w,
