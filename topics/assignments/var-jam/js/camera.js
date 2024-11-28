@@ -31,11 +31,10 @@ const pianoKeys = {
   },
 };
 
-// Variable to track the active key
-let activeKey = null;
+// Array to track currently active keys
+let activeKeys = [];
 
 let webcam; // Webcam feed
-
 
 // Colors for each key
 let colors = [
@@ -47,8 +46,6 @@ let colors = [
   [0, 255, 255],  // Cyan for 'A'
   [255, 255, 255] // White for 'B'
 ];
-
-
 
 function preload() {
   for (let i = 0; i < 7; i++) {
@@ -63,41 +60,27 @@ function setup() {
 
   // Initialize webcam 
   webcam = createCapture(VIDEO);
-  webcam.size(width, height); 
-  webcam.hide(); 
+  webcam.size(width, height);
+  webcam.hide();
 }
 
 function draw() {
-
   image(webcam, 0, 0, width, height);
 
-
-    if (activeKey !== null) {
-      drawVisuals(activeKey);
-       let c = colors[activeKey];
-    fill(c[0], c[1], c[2], 100); // Semi-transparent color
-    rect(0, 0, width, height);
-  };
-  
-  
-    // Overlay color if a key is active
-  if (activeKey !== null) {
-    let c = colors[activeKey];
-    fill(c[0], c[1], c[2], 100); // Semi-transparent color
-    rect(0, 0, width, height);
+  // Draw visuals for all active keys
+  for (let keyIndex of activeKeys) {
+    drawVisuals(keyIndex);
   }
-  
+
   drawPiano();
-    
 }
 
 function drawPiano() {
   for (let i = 0; i < 7; i++) {
-    // Add transparency 
-    if (activeKey === i) {
-      fill(255, 255, 0, 200);
+    if (activeKeys.includes(i)) {
+      fill(255, 255, 0, 200); // Highlight active key
     } else {
-      fill(255, 255, 255, 150);
+      fill(255, 255, 255, 150); // Normal key
     }
 
     stroke("black");
@@ -110,8 +93,6 @@ function drawPiano() {
   }
 }
 
-
-
 function drawVisuals(keyIndex) {
   let color = colors[keyIndex];
   noStroke();
@@ -121,16 +102,21 @@ function drawVisuals(keyIndex) {
   for (let i = 0; i < 100; i++) {
     ellipse(random(width), random(height), random(5, 20));
   }
-
 }
 
 function keyPressed() {
   if (keyMap[key] !== undefined) {
-    activeKey = keyMap[key];
-    pianoNotes[activeKey].play();
+    let keyIndex = keyMap[key];
+    if (!activeKeys.includes(keyIndex)) {
+      activeKeys.push(keyIndex); // Add key to active keys
+      pianoNotes[keyIndex].play(); // Play the note
+    }
   }
 }
 
 function keyReleased() {
-  activeKey = null;
+  if (keyMap[key] !== undefined) {
+    let keyIndex = keyMap[key];
+    activeKeys = activeKeys.filter(k => k !== keyIndex); // Remove key from active keys
+  }
 }
