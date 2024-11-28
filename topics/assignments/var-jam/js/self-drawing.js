@@ -43,7 +43,7 @@ let shapes = [];
 
 function preload() {
   for (let i = 0; i < 7; i++) {
-    pianoNotes[i] = loadSound(`assets/sounds/white-keys/white-keynote${i}.wav`);
+    pianoNotes[i] = loadSound(`assets/sounds/pain/pain${i}.wav`);
   }
 }
 
