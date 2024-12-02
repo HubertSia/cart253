@@ -62,7 +62,9 @@ function setup() {
   pianoKeys.position.x = (width - 7 * pianoKeys.white.w) / 2;
 }
 
-// Draw the piano and display the message
+/**
+ *  Draw the piano, display the message and add secret button
+ */
 function draw() {
   drawPiano();
   displayMessage();
@@ -105,8 +107,8 @@ function keyPressed() {
     pianoNotes[activeKey].play();
     
     // Pick a random message and show it immediately, reset messageTime
-    displayedMessage = random(messages);
-    // The message will display for 1 second (60 millasecond)
+    displayedMessage = random(messages);   
+    // The message will display for 1 second (60 millasecond) and disapear
     messageTime = 60; 
   }
 }
