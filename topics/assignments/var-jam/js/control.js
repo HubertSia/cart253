@@ -10,14 +10,29 @@ let pianoNotes = [];
 
 // Key mappings to notes
 let keyMap = {
-  a: 0, // C
-  s: 1, // D
-  d: 2, // E
-  f: 3, // F
-  g: 4, // G
-  h: 5, // A
-  j: 6, // B
+  
+  // C note
+  a: 0,
+  
+  // D note
+  s: 1, 
+  
+  // E note
+  d: 2, 
+  
+  // F note
+  f: 3,
+  
+  // G note
+  g: 4, 
+  
+  // A note
+  h: 5, 
+  
+  // B note
+  j: 6, 
 };
+
 
 // Piano dimensions
 const pianoKeys = {
