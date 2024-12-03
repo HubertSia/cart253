@@ -1,5 +1,5 @@
 /**
- * The piano
+ * The positive piano
  * Hubert Sia
  */
 
@@ -32,27 +32,26 @@ const pianoKeys = {
 };
 
 // Messages to display
-const messages = [
-  "Believe in yourself!",
-  "Love your hair!",
-  "Nice piano piece!",
-  "You are great!",
-  "You should become a musicision!",
-  "Keep on pressing!",
-  "Press 'E' ",
-];
+let positive;
+ // Store positive messages array
+let messages;
 
 // Tracking the active key
 let activeKey = null;
 let displayedMessage = "";
-//Timer of our message start at zero
+// Timer for the message
 let messageTime = 0;
 
 // Function to preload sounds
 function preload() {
+  
+  // Loads our arrays of cat sounds
   for (let i = 0; i < 7; i++) {
     pianoNotes[i] = loadSound(`assets/sounds/cat/meow${i}.mp3`);
   }
+
+  //Loads our positive messages in the JSON file
+  positive = loadJSON("assets/data/positive.json");
 }
 
 // Setup the canvas
@@ -60,19 +59,21 @@ function setup() {
   createCanvas(900, 500);
   background("yellow");
   pianoKeys.position.x = (width - 7 * pianoKeys.white.w) / 2;
+
+  // Extract messages from JSON
+  messages = positive.positiveMessages;
 }
 
 /**
- *  Draw the piano, display the message and add secret button
+ * Draw the piano, display the message, and handle secret button
  */
 function draw() {
   drawPiano();
   displayMessage();
-  secretButton();
 }
 
 /**
- * Draw the piano keys 
+ * Draw the piano keys
  */
 function drawPiano() {
   for (let i = 0; i < 7; i++) {
@@ -87,8 +88,9 @@ function drawPiano() {
   }
 }
 
+
 /**
- *  Display the random message while playing
+ * Display the random message while playing
  */
 function displayMessage() {
   if (messageTime > 0) {
@@ -97,39 +99,31 @@ function displayMessage() {
     textAlign(CENTER, CENTER);
     text(displayedMessage, width / 2, height - 150);
     messageTime--;
+  } else {
+    displayedMessage = ""; // Clear message when timer ends
   }
 }
 
-// When a key is pressed
+/***
+ * When a key is pressed
+ */
 function keyPressed() {
   if (keyMap[key] !== undefined) {
     activeKey = keyMap[key];
     pianoNotes[activeKey].play();
-    
-    // Pick a random message and show it immediately, reset messageTime
-    displayedMessage = random(messages);   
-    // The message will display for 1 second (60 millasecond) and disapear
-    messageTime = 60; 
+
+    // Pick a random message and show it
+    displayedMessage = random(messages);
+    messageTime = 60; // Display for 1 second
+  }
+
+  // Secret button for 'E'
+  if (key === 'e' || key === 'E') {
+    window.open("https://www.funnycatpix.com/", "_blank");
   }
 }
 
 // Reset active key when released
 function keyReleased() {
   activeKey = null;
-}
-
-/**
- * Activate secret button
- */
-function secretButton(){
-
-
-    // Check if 'f' or 'F' is pressed
-    // Opens link in a new tab (Leads to Crab Rave)
-    if (key === 'e' || key === 'E') { 
-     
-        window.open("https://www.funnycatpix.com/","_blank"); 
-      }
-    
-
 }
