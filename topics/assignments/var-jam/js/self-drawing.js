@@ -87,10 +87,11 @@ function drawPiano() {
  * System of generate random shapes
  */
 function generateRandomShape() {
-  // Our type of shapes
+  
+  // Our type of shapes and radomise it
   let shapeType = random(["circle", "rectangle", "triangle"]);
   
-  // Value of the shapes
+  // Value of the shapes and randomize it values
   let shape = {
     type: shapeType,
     x: random(width),
@@ -111,9 +112,11 @@ function drawShapes() {
     let shape = shapes[i];
     fill(shape.color);
     noStroke();
+    
     // Randomize the position and size of the circle
     if (shape.type === "circle") {
       ellipse(shape.x, shape.y, shape.size);
+      
     // Randomize the position and size of the rectangle
     } else if (shape.type === "rectangle") {
     // Randomize the position and size of the triangle
@@ -125,7 +128,7 @@ function drawShapes() {
 }
 
 /**
- *  Check the speed and bounce of the shapes
+ * Check the speed and bounce of the shapes
  */
 function updateShapes() {
   for (let i = 0; i < shapes.length; i++) {
@@ -151,13 +154,15 @@ function updateShapes() {
  */
 function keyPressed() {
   if (keyMap[key] !== undefined) {
-        // Play the piano sound
+        
+    // Play the piano sound
     activeKey = keyMap[key];
     pianoNotes[activeKey].play();
     
     
      // Create a new random shape
     let newShape = generateRandomShape();
+    
     // Add it to the shapes array
     shapes.push(newShape); 
   }
