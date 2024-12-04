@@ -116,6 +116,9 @@ function draw() {
   }
 }
 
+/**
+ * Draw piano
+ */
 function drawPiano() {
   for (let i = 0; i < 7; i++) {
     fill(activeKey === i ? "yellow" : "white");
@@ -129,6 +132,10 @@ function drawPiano() {
   }
 }
 
+
+/**
+ * On the key pressed
+ */
 function keyPressed() {
   if (keyMap[key] !== undefined) {
     activeKey = keyMap[key];
@@ -140,11 +147,16 @@ function keyPressed() {
   }
 }
 
+/**
+ * Return to null on releasde
+ */
 function keyReleased() {
   activeKey = null;
 }
 
-// Class for piano particles
+/**
+ * Class for the particle system
+ */
 class Particle {
   constructor(x, y, color) {
     this.x = x;
@@ -155,34 +167,54 @@ class Particle {
     this.lifespan = 255;
     this.color = color;
   }
-
+  
+  
+/**
+ * Update the movements and lifespan
+ */
   update() {
     this.x += this.vx;
     this.y += this.vy;
     this.lifespan -= 5;
   }
 
+  /**
+ * Display and visualized the particles
+ */
   show() {
     noStroke();
     fill(this.color.levels[0], this.color.levels[1], this.color.levels[2], this.lifespan);
     ellipse(this.x, this.y, this.size);
   }
 
+/**
+ * Once the lifespan drops 0. Make it disapear for new ones
+ */
   isDead() {
     return this.lifespan <= 0;
   }
 }
 
+
+/**
+ * Draws our particle system when we play our piano keys
+ */
 function generatePianoParticles(keyIndex) {
+  
+  // Set the particles near the key area and each with a color
   const x = pianoKeys.position.x + keyIndex * pianoKeys.white.w + pianoKeys.white.w / 2;
   const y = pianoKeys.position.y + pianoKeys.white.h - 20;
   const keyColors = ["red", "orange", "yellow", "green", "blue", "indigo", "violet"];
-
+  
+  // Loop the colors and generate 20 particles
   for (let i = 0; i < 20; i++) {
     pianoParticles.push(new Particle(x, y, color(keyColors[keyIndex])));
   }
 }
 
+/**
+ * Draws our particle system when we play our piano keys
+ */
 function updatePianoParticles() {
   for (let i = pianoParticles.length - 1; i >= 0; i--) {
     const particle = pianoParticles[i];
@@ -194,7 +226,9 @@ function updatePianoParticles() {
   }
 }
 
-// Class for background particles
+/**
+ * Class for background particles
+ */ 
 class BackgroundParticle {
   constructor() {
     this.x = random(width);
@@ -204,7 +238,10 @@ class BackgroundParticle {
     this.size = random(2, 5);
     this.color = color(255, random(100, 200), random(100, 255), 150);
   }
-
+  
+/**
+ * Update the movements
+ */
   update() {
     this.x += this.vx;
     this.y += this.vy;
@@ -217,8 +254,10 @@ class BackgroundParticle {
 
     // React to piano key presses (with sound amplitude influence)
     if (backgroundReaction) {
+      
       // Get current sound amplitude
       let level = amplitude.getLevel(); 
+      
       // Increase size based on sound amplitude
       this.size = random(10 + level * 50, 20 + level * 100); 
       this.color = color(random(200, 255), random(100, 255), random(100, 255), 200);
@@ -240,10 +279,14 @@ function updateBackgroundParticles() {
     particle.show();
   }
 }
-
+/**
+ * The particle reaction in the background
+ */ 
 function triggerBackgroundReaction() {
   backgroundReaction = true;
-  reactionTimer = 30; // Reaction lasts for 30 frames
+  
+  //Reaction lasts for 30 frames
+  reactionTimer = 30; 
 }
 
 // Draws the audio visualizer based on FFT data
@@ -253,7 +296,7 @@ function drawVisualizer() {
   let spectrum = fft.analyze(); 
   noFill();
   
-  // Set stroke color to light blue (RGB: 173, 216, 230)
+  // Set stroke color to light blue 
   stroke(173, 216, 230);
   strokeWeight(2);
 

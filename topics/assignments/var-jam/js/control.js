@@ -94,6 +94,7 @@ function drawPiano() {
  */
 function keyPressed() {
   if (keyMap[key] !== undefined) {
+    
     // Play the piano
     activeKey = keyMap[key];
     pianoNotes[activeKey].play();

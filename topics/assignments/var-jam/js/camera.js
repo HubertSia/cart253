@@ -86,6 +86,9 @@ function preload() {
   }
 }
 
+/**
+ * At my start
+ */
 function setup() {
   createCanvas(900, 500);
   background("green");
@@ -97,7 +100,11 @@ function setup() {
   webcam.hide();
 }
 
+/**
+ * At the draw
+ */
 function draw() {
+  // Camera set up
   image(webcam, 0, 0, width, height);
 
   // Draw visuals for all active keys
@@ -108,24 +115,29 @@ function draw() {
   drawPiano();
 }
 
+/**
+ * Draw piano
+ */
 function drawPiano() {
   for (let i = 0; i < 7; i++) {
     if (activeKeys.includes(i)) {
-      fill(255, 255, 0, 200); // Highlight active key
+      
+       // Highlight active key
+      fill(255, 255, 0, 200);
     } else {
-      fill(255, 255, 255, 150); // Normal key
+      
+      // Normal key
+      fill(255, 255, 255, 150); 
     }
 
     stroke("black");
-    rect(
-      pianoKeys.position.x + i * pianoKeys.white.w,
-      pianoKeys.position.y,
-      pianoKeys.white.w,
-      pianoKeys.white.h
-    );
+    rect( pianoKeys.position.x + i * pianoKeys.white.w, pianoKeys.position.y, pianoKeys.white.w, pianoKeys.white.h);
   }
 }
 
+/**
+ *  Draw the background visuals
+ */
 function drawVisuals(keyIndex) {
   let color = colors[keyIndex];
   noStroke();
@@ -141,17 +153,22 @@ function keyPressed() {
   if (keyMap[key] !== undefined) {
     let keyIndex = keyMap[key];
     if (!activeKeys.includes(keyIndex)) {
+      
       // Add key to active keys
       activeKeys.push(keyIndex); 
+      
       // Play the note
       pianoNotes[keyIndex].play(); 
     }
   }
 }
 
+
 function keyReleased() {
   if (keyMap[key] !== undefined) {
     let keyIndex = keyMap[key];
-    activeKeys = activeKeys.filter(k => k !== keyIndex); // Remove key from active keys
+    
+    // Remove key from active keys
+    activeKeys = activeKeys.filter(k => k !== keyIndex); 
   }
 }
