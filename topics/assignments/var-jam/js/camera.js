@@ -149,6 +149,8 @@ function drawVisuals(keyIndex) {
   }
 }
 
+
+
 function keyPressed() {
   if (keyMap[key] !== undefined) {
     let keyIndex = keyMap[key];
