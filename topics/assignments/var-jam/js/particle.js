@@ -266,6 +266,9 @@ class BackgroundParticle {
     }
   }
 
+  /**
+   * Create the ellipse particle
+   */
   show() {
     noStroke();
     fill(this.color);
@@ -273,6 +276,9 @@ class BackgroundParticle {
   }
 }
 
+ /**
+   * Generate our particles in the background
+   */
 function updateBackgroundParticles() {
   for (let particle of backgroundParticles) {
     particle.update();
