@@ -46,11 +46,24 @@ const pianoKeys = {
   },
 };
 
+
+
+// Image of Donkey Kong
+let dkImage;
+
+// Array to store Donkey Kong image positions
+let dkPositions = [];
+
+
 // Variable to track the active key
 let activeKey = null;
 
 // Preloard the sound files on the loop
 function preload() {
+  
+  dkImage = loadImage('assets/images/dk_head.png'); 
+
+  
   for (let i = 0; i < 7; i++) {
     pianoNotes[i] = loadSound(`assets/sounds/white-keys/white-keynote${i}.wav`);
   }
@@ -73,7 +86,13 @@ function setup() {
  */
 function draw() {
   drawPiano();
+  
+  drawDK();
+  
+  
 }
+
+
 
 
 
@@ -89,6 +108,23 @@ function drawPiano() {
   }
 }
 
+
+/**
+ * Draw Donkey Kong
+ */
+
+function drawDK() {
+  
+    // Draw Donkey Kong images at their stored positions with random scales
+  for (let dk of dkPositions) {
+    
+    // Scale image by random factor
+    image(dkImage, dk.x, dk.y, dk.scale * 50, dk.scale * 50);
+  
+  }
+  
+}
+
 /**
  * On the key pressed
  */
@@ -98,6 +134,18 @@ function keyPressed() {
     // Play the piano
     activeKey = keyMap[key];
     pianoNotes[activeKey].play();
+    
+// Add a new Donkey Kong image at a random position with random scale
+    dkPositions.push({
+      
+      // Ensure it fits within the canvas
+      x: random(0, width - 50),
+      y: random(0, height - 50),
+      
+      // Random scale between 0.5x and 2x
+      scale: random(0.5, 2), 
+    });
+    
   }
 }
 
