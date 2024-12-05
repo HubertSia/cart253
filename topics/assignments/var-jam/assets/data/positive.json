@@ -1,22 +1,69 @@
 {
-  "description": "A list of positive message.",
-  "positiveMessages":
-    [
-   "Believe in yourself!",
-    "Love your hair!",
-    "Nice piano piece!",
-    "You are great!",
-    "You should become a musician!",
-    "Keep on pressing!",
-    "Press 'E' ",
-    "You're doing amazing!",
-    "Stay strong!",
-    "Believe in your dreams!",
-    "Keep going, you're almost there!",
-    "You are a star!",
-    "Good vibes only!",
-    "Your smile is contagious!",
-    "You can do anything you set your mind to!",
-    " Merry Chistmas! "
-    ]
+  "description": "A list of positive messages in English and French.",
+  "positiveMessages": [
+    {
+      "en": "Believe in yourself!",
+      "fr": "Crois en toi !"
+    },
+    {
+      "en": "Love your hair!",
+      "fr": "Aime tes cheveux !"
+    },
+    {
+      "en": "Nice piano piece!",
+      "fr": "Beau morceau de piano !"
+    },
+    {
+      "en": "You are great!",
+      "fr": "Tu es génial(e) !"
+    },
+    {
+      "en": "You should become a musician!",
+      "fr": "Tu devrais devenir musicien(ne) !"
+    },
+    {
+      "en": "Keep on pressing!",
+      "fr": "Continue à persévérer !"
+    },
+    {
+      "en": "Press 'E'",
+      "fr": "Appuie sur 'E'."
+    },
+    {
+      "en": "You're doing amazing!",
+      "fr": "Tu fais un travail incroyable !"
+    },
+    {
+      "en": "Stay strong!",
+      "fr": "Reste fort(e) !"
+    },
+    {
+      "en": "Believe in your dreams!",
+      "fr": "Crois en tes rêves !"
+    },
+    {
+      "en": "Keep going, you're almost there!",
+      "fr": "Continue, tu es presque arrivé(e) !"
+    },
+    {
+      "en": "You are a star!",
+      "fr": "Tu es une étoile !"
+    },
+    {
+      "en": "Good vibes only!",
+      "fr": "Que des ondes positives !"
+    },
+    {
+      "en": "Your smile is contagious!",
+      "fr": "Ton sourire est contagieux !"
+    },
+    {
+      "en": "You can do anything you set your mind to!",
+      "fr": "Tu peux accomplir tout ce que tu veux !"
+    },
+    {
+      "en": "Merry Christmas!",
+      "fr": "Joyeux Noël !"
+    }
+  ]
 }

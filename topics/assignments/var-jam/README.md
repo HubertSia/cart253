@@ -17,14 +17,25 @@ This project uses [p5.js](https://p5js.org).
 
 ## Attribution
 
-The pixelated camera: https://editor.p5js.org/zoewujw/sketches/ShlQBGNPg
-The amazing music perform by The Drunk Men's Choir: https://www.youtube.com/watch?v=mDTzB0mgBHw
-Microphone functions:https://editor.p5js.org/p5/sketches/Sound:_Mic_Threshold
-Clown Image was already in the base project
-Borrow some code from the Arrays and Functions modules
+Borrow some code from the Arrays, Functions and Data modules
+The p5.js webcam: https://p5js.org/examples/imported-media-video-capture/
+The particle system: https://editor.p5js.org/codingtrain/sketches/D4ty3DgZB
+Documentation of the particle system: https://archive.p5js.org/examples/simulate-particles.html
+Audio Visualizer: https://editor.p5js.org/jonfroehlich/sketches/d2euV09i
+JSON language management: https://simplelocalize.io/docs/file-formats/multi-language-json/
 
-All the "pain" SFX: 
+
+All "pain" SFX: 
 Wilheim scream: https://www.youtube.com/watch?v=PP7WJL2JtLs
-
+Girl Scream: https://www.youtube.com/watch?v=-s04sbIViJQ
+Jerma LIFE IS PAIN: https://youtu.be/9Xmom50buHk?si=nVjKNPHrZm7ZDO1p
+Homer scream: https://www.youtube.com/watch?v=ypzfsySqhxo
+Idubz and Lilypichu: https://www.youtube.com/watch?v=mvz3LRK263E
  
+"meow" SFX: https://pixabay.com/sound-effects/search/cat/
 
+
+DK RAP SONG from YouTube: https://www.youtube.com/watch?v=npuuTBlEb1U
+DK Image: https://www.pinterest.com/pin/donkey-kong--803048177290270142/
+
+Piano keyboard sound: Hubert Sia

@@ -1,5 +1,5 @@
 /**
- * The piano
+ * The Christmas piano
  * Hubert Sia
  */
 
@@ -45,7 +45,7 @@ const pianoKeys = {
   },
 };
 
-// Variable to track the active key
+// Track the active key
 let activeKey = null;
 
 // Arrays to store particles

@@ -1,5 +1,5 @@
 /**
- * The piano
+ * The DK piano
  * Hubert Sia
  */
 
@@ -55,15 +55,18 @@ let dkImage;
 let dkPositions = [];
 
 
-// Variable to track the active key
+// Track the active key
 let activeKey = null;
 
-// Preloard the sound files on the loop
+/**
+ * Preload our assets
+ */
 function preload() {
   
+  // Load Donkey Kong image
   dkImage = loadImage('assets/images/dk_head.png'); 
 
-  
+  // Load in our DK piano keys
   for (let i = 0; i < 7; i++) {
     pianoNotes[i] = loadSound(`assets/sounds/dk-keys/${i}dk.wav`);
   }
@@ -85,8 +88,11 @@ function setup() {
  * At my draw 
  */
 function draw() {
+  
+  // Draws our piano
   drawPiano();
   
+  // Draws our DK image
   drawDK();
   
   

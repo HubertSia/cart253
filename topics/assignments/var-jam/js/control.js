@@ -46,7 +46,7 @@ const pianoKeys = {
   },
 };
 
-// Variable to track the active key
+// Track the active key
 let activeKey = null;
 
 // Preloard the sound files on the loop

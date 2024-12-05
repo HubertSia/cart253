@@ -47,12 +47,16 @@ const pianoKeys = {
 
 // Messages to display
 let positive;
+
  // Store positive messages array
 let messages;
 
 // Tracking the active key
 let activeKey = null;
+
+// Display the message
 let displayedMessage = "";
+
 // Timer for the message
 let messageTime = 0;
 
@@ -130,11 +134,18 @@ function keyPressed() {
     activeKey = keyMap[key];
     pianoNotes[activeKey].play();
 
-    // Pick a random message and show it
-    displayedMessage = random(messages);
-    messageTime = 60; // Display for 1 second
+    // Pick a random message and extract the correct language
+    const randomMessage = random(messages);
+    
+     // Default according to the html lang
+    const htmlLang = document.documentElement.lang;
+    
+    // Fallback to default languange
+    displayedMessage = randomMessage[htmlLang] ;
+     
+    // Display for 1 second
+    messageTime = 60;
   }
-
   // Secret button for 'E'
   if (key === 'e' || key === 'E') {
     window.open("https://www.funnycatpix.com/", "_blank");
