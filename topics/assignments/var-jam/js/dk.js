@@ -65,7 +65,7 @@ function preload() {
 
   
   for (let i = 0; i < 7; i++) {
-    pianoNotes[i] = loadSound(`assets/sounds/dk/${i}dk.wav`);
+    pianoNotes[i] = loadSound(`assets/sounds/dk-keys/${i}dk.wav`);
   }
 }
 
