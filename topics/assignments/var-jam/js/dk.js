@@ -65,7 +65,7 @@ function preload() {
 
   
   for (let i = 0; i < 7; i++) {
-    pianoNotes[i] = loadSound(`assets/sounds/white-keys/white-keynote${i}.wav`);
+    pianoNotes[i] = loadSound(`assets/sounds/dk/${i}dk.wav`);
   }
 }
 
@@ -75,7 +75,7 @@ function preload() {
  */
 function setup() {
   createCanvas(900, 500);
-  background("green");
+  background("yellow");
   pianoKeys.position.x = (width - 7 * pianoKeys.white.w) / 2;
 }
 
@@ -102,7 +102,9 @@ function draw() {
 function drawPiano() {
   // Loop the shapes of the keys 7 times
   for (let i = 0; i < 7; i++) {
-    fill(activeKey === i ? "yellow" : "white");
+    
+    // When the key is pressed turn yellow and white when is idle
+    fill(activeKey === i ? "brown" : "white");
     stroke("black");
     rect(pianoKeys.position.x + i * pianoKeys.white.w, pianoKeys.position.y, pianoKeys.white.w, pianoKeys.white.h);
   }
