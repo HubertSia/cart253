@@ -25,6 +25,7 @@ The fifth one is all about positivity. The keyboard makes cat meowing sounds—b
 Donkey Kong Piano
 The sixth is a callback to the Art-Jam. Donkey Kong is back! Every key press generates a new Donkey Kong head, and the keyboard sounds come straight from the DK Rap itself.
 
+
 ## Credits
 
 This project uses [p5.js](https://p5js.org).
@@ -48,6 +49,11 @@ Homer scream: https://www.youtube.com/watch?v=ypzfsySqhxo
 Idubz and Lilypichu: https://www.youtube.com/watch?v=mvz3LRK263E
  
 "meow" SFX: https://pixabay.com/sound-effects/search/cat/
+
+All crhistmas SFX:
+Santa's HO HO HO, Bells and reindeer charm: https://pixabay.com/sound-effects/search/christmas/ 
+All I want for Christmas: https://youtu.be/1giQVuoTAFM?si=U-qXd59dVdVx3uhF
+Angel sfx: https://www.youtube.com/watch?v=dSRA3ngRoW8
 
 
 DK RAP SONG from YouTube: https://www.youtube.com/watch?v=npuuTBlEb1U
