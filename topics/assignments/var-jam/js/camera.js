@@ -97,8 +97,11 @@ function preload() {
  * At my start
  */
 function setup() {
+  //Create our canvas
   createCanvas(900, 500);
   background("green");
+  
+  // Set-up our piano position
   pianoKeys.position.x = (width - 7 * pianoKeys.white.w) / 2;
 
   // Initialize webcam and size
@@ -126,6 +129,7 @@ function draw() {
  * Draw piano
  */
 function drawPiano() {
+  // Loop our 7 key pianos
   for (let i = 0; i < 7; i++) {
     if (activeKeys.includes(i)) {
       
@@ -136,7 +140,6 @@ function drawPiano() {
       // Normal key
       fill(255, 255, 255, 150); 
     }
-
     stroke("black");
     rect( pianoKeys.position.x + i * pianoKeys.white.w, pianoKeys.position.y, pianoKeys.white.w, pianoKeys.white.h);
   }
@@ -178,6 +181,8 @@ function keyPressed() {
  * On release of the key
  */
 function keyReleased() {
+  
+  // Found anything on the keymap array
   if (keyMap[key] !== undefined) {
     let keyIndex = keyMap[key];
     

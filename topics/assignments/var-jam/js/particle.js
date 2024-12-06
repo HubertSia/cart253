@@ -83,8 +83,12 @@ function preload() {
  * At the start of our scene
  */
 function setup() {
+  
+  // Create our canvas
   createCanvas(900, 500);
   background("green");
+  
+  // Set-up our key position
   pianoKeys.position.x = (width - 7 * pianoKeys.white.w) / 2;
 
   // Initialize amplitude and FFT objects
@@ -101,7 +105,6 @@ function setup() {
  * At the draw
  */
 function draw() {
-  background("green");
 
   // Update and draw background particles
   updateBackgroundParticles();
@@ -128,15 +131,14 @@ function draw() {
  * Draw piano
  */
 function drawPiano() {
+  
+  //Loops our piano keys 7 times
   for (let i = 0; i < 7; i++) {
+    
+    // Yellow on active, white on idle
     fill(activeKey === i ? "yellow" : "white");
     stroke("black");
-    rect(
-      pianoKeys.position.x + i * pianoKeys.white.w,
-      pianoKeys.position.y,
-      pianoKeys.white.w,
-      pianoKeys.white.h
-    );
+    rect( pianoKeys.position.x + i * pianoKeys.white.w, pianoKeys.position.y,  pianoKeys.white.w, pianoKeys.white.h );
   }
 }
 
@@ -145,18 +147,22 @@ function drawPiano() {
  * On the key pressed
  */
 function keyPressed() {
+  
+  // Check for our keymaps in our array
   if (keyMap[key] !== undefined) {
     activeKey = keyMap[key];
+    
+    //Plays the music
     pianoNotes[activeKey].play();
     generatePianoParticles(activeKey);
 
-    // Trigger background reaction
+    // Trigger background particle reaction
     triggerBackgroundReaction();
   }
 }
 
 /**
- * Return to null on releasde
+ * Return to null on released
  */
 function keyReleased() {
   activeKey = null;
@@ -166,6 +172,8 @@ function keyReleased() {
  * Class for the particle system
  */
 class Particle {
+  
+  // Generate the random position and the colors
   constructor(x, y, color) {
     this.x = x;
     this.y = y;
@@ -238,6 +246,7 @@ function updatePianoParticles() {
  * Class for background particles
  */ 
 class BackgroundParticle {
+  // Generate the random position and size. Along with the color
   constructor() {
     this.x = random(width);
     this.y = random(height);
@@ -269,6 +278,7 @@ class BackgroundParticle {
       // Increase size based on sound amplitude
       this.size = random(10 + level * 50, 20 + level * 100); 
       this.color = color(random(200, 255), random(100, 255), random(100, 255), 200);
+      // Reduce to atoms
     } else {
       this.size = max(this.size - 0.1, 2);
     }
@@ -288,6 +298,8 @@ class BackgroundParticle {
    * Generate our particles in the background
    */
 function updateBackgroundParticles() {
+  
+  // Loop our particles
   for (let particle of backgroundParticles) {
     particle.update();
     particle.show();

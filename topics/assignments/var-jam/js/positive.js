@@ -2,7 +2,7 @@
  * The positive piano
  * Hubert Sia
  * 
- *This one is all about positivity. 
+ * This one is all about positivity. 
  * The keyboard makes cat meowing sounds—because why not?—and displays positive messages at the same time. 
  * I also added a secret button, just for fun. The idea behind this is that life is always filled with positivity if you look for it.
 
@@ -87,8 +87,12 @@ function preload() {
  * At the start of our scene
  */
 function setup() {
+  
+  //Create our canvas
   createCanvas(900, 500);
   background("yellow");
+  
+  //Set-up our key position
   pianoKeys.position.x = (width - 7 * pianoKeys.white.w) / 2;
 
   // Extract messages from JSON
@@ -99,7 +103,11 @@ function setup() {
  * Draw the piano, display the message, and handle secret button
  */
 function draw() {
+  
+  // Draw our keyboards
   drawPiano();
+  
+  // Draw our message
   displayMessage();
 }
 
@@ -107,12 +115,13 @@ function draw() {
  * Draw the piano keys
  */
 function drawPiano() {
+  
+  // Loops our 7 keys
   for (let i = 0; i < 7; i++) {
+    // Active blue, idle on white
     fill(activeKey === i ? "blue" : "white");
     stroke("black");
-    rect(
-      pianoKeys.position.x + i * pianoKeys.white.w, pianoKeys.position.y, pianoKeys.white.w, pianoKeys.white.h
-    );
+    rect(pianoKeys.position.x + i * pianoKeys.white.w, pianoKeys.position.y, pianoKeys.white.w, pianoKeys.white.h);
   }
 }
 
@@ -128,7 +137,8 @@ function displayMessage() {
     text(displayedMessage, width / 2, height - 150);
     messageTime--;
   } else {
-    displayedMessage = ""; // Clear message when timer ends
+    // Clear message when timer ends
+    displayedMessage = ""; 
   }
 }
 
@@ -136,7 +146,10 @@ function displayMessage() {
  * When a key is pressed
  */
 function keyPressed() {
+  // Check in the array of the keymap
   if (keyMap[key] !== undefined) {
+    
+    //Play the music
     activeKey = keyMap[key];
     pianoNotes[activeKey].play();
 

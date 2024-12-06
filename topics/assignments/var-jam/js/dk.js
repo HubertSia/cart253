@@ -83,8 +83,11 @@ function preload() {
  * At the start scene
  */
 function setup() {
+  // Draw canvas
   createCanvas(900, 500);
   background("yellow");
+  
+  // Set-up the key position
   pianoKeys.position.x = (width - 7 * pianoKeys.white.w) / 2;
 }
 

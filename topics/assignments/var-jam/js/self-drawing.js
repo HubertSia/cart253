@@ -81,8 +81,13 @@ function setup() {
  * At my draw 
  */
 function draw() {
+  //Draw the piano
   drawPiano();
+  
+  // Draw our shapes
   drawShapes();
+  
+  // Update our shapes
   updateShapes();
 
 }
@@ -95,6 +100,8 @@ function draw() {
 function drawPiano() {
   // Loop the shapes of the keys 7 times
   for (let i = 0; i < 7; i++) {
+    
+    // Active on red, idle on white
     fill(activeKey === i ? "red" : "white");
     stroke("black");
     rect(pianoKeys.position.x + i * pianoKeys.white.w, pianoKeys.position.y, pianoKeys.white.w, pianoKeys.white.h);
@@ -150,6 +157,7 @@ function drawShapes() {
  * Check the speed and bounce of the shapes
  */
 function updateShapes() {
+  // loop all the shapes in the array
   for (let i = 0; i < shapes.length; i++) {
     let shape = shapes[i];
     shape.x += shape.speedX;

@@ -66,8 +66,11 @@ function preload() {
  * At the start scene
  */
 function setup() {
+  // Create our canvas
   createCanvas(900, 500);
   background("green");
+  
+  // Set-up our key position
   pianoKeys.position.x = (width - 7 * pianoKeys.white.w) / 2;
 }
 
@@ -88,6 +91,7 @@ function draw() {
 function drawPiano() {
   // Loop the shapes of the keys 7 times
   for (let i = 0; i < 7; i++) {
+    // Active turn yellow, white on idle
     fill(activeKey === i ? "yellow" : "white");
     stroke("black");
     rect(pianoKeys.position.x + i * pianoKeys.white.w, pianoKeys.position.y, pianoKeys.white.w, pianoKeys.white.h);
@@ -98,8 +102,9 @@ function drawPiano() {
  * On the key pressed
  */
 function keyPressed() {
-  if (keyMap[key] !== undefined) {
-    
+  
+  // Check on my keymap for anything
+  if (keyMap[key] !== undefined) {  
     // Play the piano
     activeKey = keyMap[key];
     pianoNotes[activeKey].play();
