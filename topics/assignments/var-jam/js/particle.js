@@ -173,7 +173,7 @@ function keyReleased() {
  */
 class Particle {
   
-  // Generate the random position and the colors
+  // Generate the random position, size and the colors
   constructor(x, y, color) {
     this.x = x;
     this.y = y;
@@ -232,6 +232,7 @@ function generatePianoParticles(keyIndex) {
  * Draws our particle system when we play our piano keys
  */
 function updatePianoParticles() {
+  // Loop our particles
   for (let i = pianoParticles.length - 1; i >= 0; i--) {
     const particle = pianoParticles[i];
     particle.update();
@@ -246,7 +247,7 @@ function updatePianoParticles() {
  * Class for background particles
  */ 
 class BackgroundParticle {
-  // Generate the random position and size. Along with the color
+  // Generate the random position and size. Along with the colors
   constructor() {
     this.x = random(width);
     this.y = random(height);

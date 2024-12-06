@@ -118,7 +118,7 @@ function drawPiano() {
   // Loop the shapes of the keys 7 times
   for (let i = 0; i < 7; i++) {
     
-    // When the key is pressed turn yellow and white when is idle
+    // When the key is pressed turn brown and white when is idle
     fill(activeKey === i ? "brown" : "white");
     stroke("black");
     rect(pianoKeys.position.x + i * pianoKeys.white.w, pianoKeys.position.y, pianoKeys.white.w, pianoKeys.white.h);

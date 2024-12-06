@@ -130,7 +130,9 @@ function drawPiano() {
  * Display the random message while playing
  */
 function displayMessage() {
+  //If my timer does not reach 0
   if (messageTime > 0) {
+    // Draw the random message
     fill("black");
     textSize(32);
     textAlign(CENTER, CENTER);

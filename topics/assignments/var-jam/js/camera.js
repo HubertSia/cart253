@@ -149,6 +149,8 @@ function drawPiano() {
  *  Draw the background visuals
  */
 function drawVisuals(keyIndex) {
+  
+  // 
   let color = colors[keyIndex];
   noStroke();
   fill(color[0], color[1], color[2], 150);
