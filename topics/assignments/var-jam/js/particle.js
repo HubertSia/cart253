@@ -1,6 +1,14 @@
 /**
  * The Christmas piano
  * Hubert Sia
+ * 
+ * 
+ * This is a Christmas-themed particle piano. 
+ * It features a particle system on the keyboard and background, with Christmas sounds for each key. 
+ * There’s also an audio visualizer that looks like icicles to match the holiday vibe.
+ * 
+ * Made with p5
+ * https://p5js.org/
  */
 
 "use strict";

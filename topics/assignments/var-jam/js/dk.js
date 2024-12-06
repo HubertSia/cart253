@@ -1,6 +1,12 @@
 /**
  * The DK piano
  * Hubert Sia
+ * 
+ * This one is callback to the Art-Jam. Donkey Kong is back! 
+ * Every key press generates a new Donkey Kong head, and the keyboard sounds come straight from the DK Rap itself.
+ * 
+ * Made with p5
+ * https://p5js.org/
  */
 
 "use strict";

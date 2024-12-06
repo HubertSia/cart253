@@ -2,6 +2,11 @@
  * The piano that draws
  * Hubert Sia
  * 
+ * A self-drawing piano. When you hit a piano key, it generates random shapes that draw themselves on the canvas. 
+ * The eerie sound of the piano reflects the inner pain of thinking up ideas as an artist.
+ * 
+ * Made with p5
+ * https://p5js.org/
  */
 
 "use strict";

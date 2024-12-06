@@ -1,6 +1,13 @@
 /**
  * The Camers buzz piano
  * Hubert Sia
+ * 
+ * 
+ * Adds particles but with a twist. I included the camera as the background to make it stand out. 
+ * Each key press triggers particles of different colors, adding a cool effect.
+ * 
+ * Made with p5
+ * https://p5js.org/
  */
 
 "use strict";

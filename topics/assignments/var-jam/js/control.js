@@ -1,6 +1,11 @@
 /**
  * The piano
  * Hubert Sia
+ * 
+ * A normal piano, which serves as the default version and our control for comparing the variations.
+
+ * 
+ * 
  */
 
 "use strict";

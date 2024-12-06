@@ -6,9 +6,24 @@ Hubert Sia
 
 ## Description
 
-This project is variations on making a piano keyboard more engaging to the user. Theres 6 variations of keyboard that I programed to make it more fun.
-Starting with the normal piano, wich servces as our default and control version of our variation. 
-Our second
+This project is about making a piano keyboard more fun and engaging for the user. I programmed six variations of a keyboard to experiment with different ways of creating enjoyment.
+
+We start with the normal piano, which serves as the default version and our control for comparing the variations.
+
+Self-Drawing Piano
+The second variation is the self-drawing piano. When you hit a piano key, it generates random shapes that draw themselves on the canvas. The eerie sound of the piano reflects the inner pain of thinking up ideas as an artist.
+
+Particles with Camera Background
+The third one adds particles—but with a twist. I included the camera as the background to make it stand out. Each key press triggers particles of different colors, adding a cool effect.
+
+Christmas-Themed Particle Piano
+The fourth one is a Christmas-themed particle piano. It features a particle system on the keyboard and background, with Christmas sounds for each key. There’s also an audio visualizer that looks like icicles to match the holiday vibe.
+
+Positivity Piano
+The fifth one is all about positivity. The keyboard makes cat meowing sounds—because why not?—and displays positive messages at the same time. I also added a secret button, just for fun. The idea behind this is that life is always filled with positivity if you look for it.
+
+Donkey Kong Piano
+The sixth is a callback to the Art-Jam. Donkey Kong is back! Every key press generates a new Donkey Kong head, and the keyboard sounds come straight from the DK Rap itself.
 
 ## Credits
 

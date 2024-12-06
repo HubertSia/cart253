@@ -1,6 +1,15 @@
 /**
  * The positive piano
  * Hubert Sia
+ * 
+ *This one is all about positivity. 
+ * The keyboard makes cat meowing sounds—because why not?—and displays positive messages at the same time. 
+ * I also added a secret button, just for fun. The idea behind this is that life is always filled with positivity if you look for it.
+
+ * 
+ * 
+ * Made with p5
+ * https://p5js.org/
  */
 
 "use strict";
@@ -102,10 +111,7 @@ function drawPiano() {
     fill(activeKey === i ? "blue" : "white");
     stroke("black");
     rect(
-      pianoKeys.position.x + i * pianoKeys.white.w,
-      pianoKeys.position.y,
-      pianoKeys.white.w,
-      pianoKeys.white.h
+      pianoKeys.position.x + i * pianoKeys.white.w, pianoKeys.position.y, pianoKeys.white.w, pianoKeys.white.h
     );
   }
 }
