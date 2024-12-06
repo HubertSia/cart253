@@ -87,7 +87,7 @@ let colors = [
  */
 function preload() {
   
-  // Preloard our sounds in a loop
+  // Preload our sounds in a loop
   for (let i = 0; i < 7; i++) {
     pianoNotes[i] = loadSound(`assets/sounds/white-keys/white-keynote${i}.wav`);
   }
@@ -117,11 +117,12 @@ function draw() {
   // Camera set up
   image(webcam, 0, 0, width, height);
 
-  // Draw visuals for all active keys
+  // Display visuals for all active keys
   for (let keyIndex of activeKeys) {
     drawVisuals(keyIndex);
   }
 
+  //Display piano
   drawPiano();
 }
 

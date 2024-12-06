@@ -104,10 +104,10 @@ function setup() {
  */
 function draw() {
   
-  // Draw our keyboards
+  // Display our keyboards
   drawPiano();
   
-  // Draw our message
+  // Display our message
   displayMessage();
 }
 

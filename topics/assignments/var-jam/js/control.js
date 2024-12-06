@@ -56,6 +56,8 @@ let activeKey = null;
 
 // Preloard the sound files on the loop
 function preload() {
+  
+  // Loop our piano keys
   for (let i = 0; i < 7; i++) {
     pianoNotes[i] = loadSound(`assets/sounds/white-keys/white-keynote${i}.wav`);
   }
@@ -80,6 +82,8 @@ function setup() {
  * At my draw 
  */
 function draw() {
+  
+  // Display the piano 
   drawPiano();
 }
 

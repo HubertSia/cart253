@@ -81,10 +81,10 @@ function setup() {
  * At my draw 
  */
 function draw() {
-  //Draw the piano
+  //Display the piano
   drawPiano();
   
-  // Draw our shapes
+  // Display our shapes
   drawShapes();
   
   // Update our shapes

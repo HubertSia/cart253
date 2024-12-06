@@ -109,7 +109,7 @@ function draw() {
   // Update and draw background particles
   updateBackgroundParticles();
 
-  // Draw the piano
+  // Display the piano
   drawPiano();
 
   // Update and draw piano particles

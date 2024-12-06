@@ -98,10 +98,10 @@ function setup() {
  */
 function draw() {
   
-  // Draws our piano
+  // Display our piano
   drawPiano();
   
-  // Draws our DK image
+  // Display our DK image
   drawDK();
   
   
